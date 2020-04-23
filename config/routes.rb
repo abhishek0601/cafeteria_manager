@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :menus
+  resources :menu_items
 
   get "/signin" => "sessions#new", as: :new_sessions
   post "/signin" => "sessions#create", as: :sessions
