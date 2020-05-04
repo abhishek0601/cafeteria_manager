@@ -1,0 +1,22 @@
+<ul>
+   <% menu.menu_items.order(:id).all.each do |menu_item| %>
+        <li class="Menus-view">
+          <div class="Menus-container">
+            <p class="Menus-display"><%= menu_item.name %></p>
+            <a class="Menu-delete ">
+              <%= form_with(url: "/menu_items/#{menu_item.id}" , method: "delete") do %>
+                <% if @current_user.role == "owner" %>
+                  <%= image_submit_tag("trash.svg") %>
+                <% end %>
+              <% end %>
+            </a>
+            <%= form_with(url: new_order_item_path(menu_item_id: menu_item.id,
+                                                   menu_item_name: menu_item.name,
+                                                   menu_item_price: menu_item.price),
+                            method: "post", class: "Menus") do %>
+              <%= button_tag("Add",type: "submit",class:   "Menus-button") %>
+            <% end %>
+          </div>
+        </li>
+   <% end %>
+</ul>

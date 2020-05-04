@@ -1,0 +1,26 @@
+<section class = "Cart">
+  <h2>My Cart</h2>
+  <table>
+    <tr class = "Title">
+      <th>SNo.</th>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+    <% order = @current_user.orders.cart %>
+    <% order_items = order.order_items.all %>
+    <% serial_no = 1 %>
+    <% order.order_items.each do|order_item| %>
+      <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+        <tr>
+          <td><%= serial_no %></td>
+          <td><%= order_item.menu_item_name %></td>
+          <td><%= order_item.menu_item_price %>
+        </tr>
+        <%serial_no = serial_no + 1%>
+    <% end %>
+  </table>
+</section>
+
+<%= form_with(url: "/orders/#{order.id}" , method: "put") do %>
+    <%= button_tag("Order",type: "submit", class: "Menus-button")%>
+<% end %>

@@ -3,4 +3,17 @@ class OrdersController < ApplicationController
 
   def index
   end
+
+  def new
+    render "cart"
+  end
+
+  def update
+    id = params[:id]
+    success = params[:success]
+    order = current_user.orders.find(id)
+    order.success = true
+    order.save!
+    redirect_to menus_path
+  end
 end

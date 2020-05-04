@@ -1,1 +1,4 @@
 <h2>Orders</h2>
+<% @current_user.orders.each do |order| %>
+  <%= order.id %>
+<% end %>

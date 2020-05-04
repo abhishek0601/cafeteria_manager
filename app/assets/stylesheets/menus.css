@@ -105,8 +105,9 @@ ul{
 }
 
 .Menus-Display{
-  font-size: 20px;
+  font-size: 30px;
   color: rgb(75, 66, 66);
+  font-style: oblique;
 }
 
 .MenuItems-Link{

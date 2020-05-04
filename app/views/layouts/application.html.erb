@@ -29,6 +29,9 @@
       <% else %>
          <div class="Navigation">
           <%= link_to "Home", new_menu_items_home_path%>
+          <%= link_to "Menus", menus_path%>
+          <%= link_to "My Orders", orders_path%>
+          <%= link_to "Cart", cart_path%>
          </div>
          <%= link_to "Sign-out", destroy_session_path,method: "delete" %>
       <% end %>

@@ -1,9 +1,11 @@
-<h1 class="Menus-title">Menus</h1>
-<%= form_with(url: "/menus", method: "post", class: "Menus") do %>
-  <p class="Menus-label">Add a Menu:</p>
-    <%= text_field_tag 'name', '' , placeholder: "Add-Menu", class: 'Menus-name'
-    %>
-  <%= button_tag("Add-Menu",type: "submit",class: "Menus-button") %>
+ <% if @current_user.role == "owner" %>
+  <h1 class="Menus-title">Menus</h1>
+  <%= form_with(url: "/menus", method: "post", class: "Menus") do %>
+    <p class="Menus-label">Add a Menu:</p>
+      <%= text_field_tag 'name', '' , placeholder: "Add-Menu", class: 'Menus-name'
+      %>
+    <%= button_tag("Add-Menu",type: "submit",class: "Menus-button") %>
+  <% end %>
 <% end %>
 <h2>Menus-List</h2>
 <ul>
@@ -17,13 +19,14 @@
                   class: "Menus-checkbox"})
               %>
             <% end %>
-            <p class="Menus-display"><%= menu.name %></p>
+            <p class="Menus-display"> <%= link_to menu.name,"menus/#{menu.id}"%> </p>
             <a class="Menu-delete ">
               <%= form_with(url: "/menus/#{menu.id}" , method: "delete") do %>
-                <%= image_submit_tag("trash.svg") %>
+                <% if @current_user.role == "owner" %>
+                  <%= image_submit_tag("trash.svg") %>
+                <% end %>
               <% end %>
             </a>
-            <p class = "MenuItems-Link"><%= link_to "Menu-Items",menu_items_path%></p>
           </div>
         </li>
    <% end %>
