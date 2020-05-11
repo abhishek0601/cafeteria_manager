@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get "/home" => "menu_items#home", as: :new_menu_items_home
   post "/order_items" => "order_items#create", as: :new_order_item
   get "/cart" => "orders#new", as: :cart
+  put "/status" => "orders#status", as: :order_status
 end

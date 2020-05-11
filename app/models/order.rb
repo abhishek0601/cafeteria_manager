@@ -9,4 +9,8 @@ class Order < ActiveRecord::Base
     end
     order
   end
+
+  def self.filter
+    Order.where.not(delivered: nil)
+  end
 end

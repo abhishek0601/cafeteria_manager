@@ -13,7 +13,15 @@ class OrdersController < ApplicationController
     success = params[:success]
     order = current_user.orders.find(id)
     order.success = true
+    order.delivered = false
     order.save!
     redirect_to menus_path
+  end
+
+  def status
+    order = Order.find(params[:id])
+    order.delivered = true
+    order.save
+    redirect_to orders_path
   end
 end

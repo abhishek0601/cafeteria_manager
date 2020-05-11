@@ -1,0 +1,10 @@
+.OrderDetails-button{
+  margin: 8px 0;
+  border-radius: 4px;
+  border: 1px transparent;
+  padding: 13px 25px;
+  background-color:rgb(69, 180, 175);
+  color: antiquewhite;
+  font-weight: 600;
+  font-size: medium;
+}

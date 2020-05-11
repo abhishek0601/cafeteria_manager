@@ -1,0 +1,38 @@
+<section class="OrdersSection">
+  <div class="OrdersSection-Title">
+    <h2 class="OrdersSection-title"><%= section_title %></h2>
+  </div>
+  <ul>
+    <% orders.each do |order| %>
+      <li>
+        <div class="OrderDetails">
+          <div class="OrderDetails-Items">
+            <p>Order id: <%= order.id %></p>
+            <% order.order_items.each do|order_item| %>
+                <div>
+                  <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+                  <%= order_item.menu_item_name %>
+                  <%= order_item.menu_item_price %>
+                </div>
+            <% end %>
+          </div>
+          <div class="OrderDetails-Status">
+            <%if @current_user.role == "customer" %>
+              <% if order.delivered %>
+                <p>Delivered</p>
+              <% else %>
+                <p>Pending</p>
+              <% end %>
+            <% else %>
+              <%= form_with(url: order_status_path(id: order.id),
+                              method: "put", class: "Orders") do %>
+                <%= button_tag("Deliver",type: "submit",class:   "OrderDetails-button") %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
+</section>
