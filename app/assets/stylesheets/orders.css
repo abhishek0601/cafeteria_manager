@@ -1,3 +1,22 @@
+.OrderDetails{
+  margin: auto;
+  background-image: linear-gradient(to right,#e0eafc,#cfdef3);
+  width: 50%;
+  padding: 10px;
+  display: inline-block;
+  border-style: solid;
+  border-color: rgb(15, 123, 196);
+
+}
+
+.OrderDetails-Items{
+  width: 70%;
+}
+
+.OrderDetails-Status{
+  width: 30%;
+}
+
 .OrderDetails-button{
   margin: 8px 0;
   border-radius: 4px;
@@ -7,4 +26,71 @@
   color: antiquewhite;
   font-weight: 600;
   font-size: medium;
+}
+
+.OrdersSection-title{
+  padding: 20px;
+  margin-left: 30px;
+}
+
+.Cart-Table{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+
+.Cart-Title{
+  background-color: rgb(219, 209, 209);
+}
+
+.Cart-TitleHead{
+  border: 1px solid black;
+  padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.Cart-Items{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.Delivered{
+  color: rgb(45, 20, 187);
+}
+
+.Status{
+  color: rgb(236, 30, 30);
+}
+
+.OrdersSection{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.OrderName{
+  float: right;
+}
+
+.EmptyCart-Img{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 40%;
+}
+
+.EmptyCart-Menu{
+  text-align: center;
+}
+
+.EmptyCart-Link{
+  background-color: rgb(26, 197, 169);
+  color: white ;
+  text-decoration: none;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  padding: 10px 10px;
 }

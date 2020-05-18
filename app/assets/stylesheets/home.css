@@ -33,24 +33,125 @@
 
 .Navigation {
   overflow: hidden;
-  background-color:blue;
+  background-image: linear-gradient(to right,#005aa7,#fffde4);
+  margin: auto;
+}
+
+.Navigation ul{
+  display: flex;
+}
+
+.Navigation-Div{
+  clear: both;
+}
+
+.Navigation-Div{
+  display: inline;
 }
 
 .Navigation a {
   float: left;
-  color: #f2f2f2;
+  color: #050404;
   text-align: center;
-  padding: 14px 16px;
+  padding: 20px 20px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: x-large;
 }
 
 .Navigation a:hover {
-  background-color: black;
-  color: skyblue;
+  background-color:white;
+  color: rgb(30, 65, 19);
 }
 
 .Navigation a.active {
   background-color: #4CAF50;
-  color:blue;
+  color:rgb(25, 203, 226);
+}
+
+.Navigation-Right{
+  float: right;
+}
+
+.Navigation-Left{
+  display: inline-flex;
+  float: left;
+}
+
+.Navigation-Bar{
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.Toggle-Button{
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  padding: 25px 25px;
+  cursor: pointer;
+}
+
+.SignUp{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  box-sizing: content-box;
+  background-color: transparent;
+}
+
+.Home-gif{
+  display:block ;
+  height: 35%;
+  width: 35%;
+  border-radius: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.Logo-icon{
+  height: 80px;
+  width: 80px;
+}
+
+.Logo-name{
+  height: 80px;
+  width: 340px;
+  padding-left: 6px;
+  padding-right: 30px;
+}
+
+.Navigation-Menu{
+
+}
+
+
+@media(max-width: 950px){
+  .Toggle-Button{
+    display: flex;
+  }
+
+  .Navigation-Div{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .Navigation ul{
+    width: 100%;
+    flex-direction: column;
+    clear: both;
+  }
+  .Navigation a{
+    text-align: center;
+  }
+  .Navigation-Menu:checked ~ .Navigation-Display{
+    max-height: 240px;
+    display: flex;
+  }
 }

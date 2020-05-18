@@ -1,21 +1,33 @@
-<ul>
+<ul class="MenuItems">
    <% menu.menu_items.order(:id).all.each do |menu_item| %>
         <li class="Menus-view">
           <div class="Menus-container">
-            <p class="Menus-display"><%= menu_item.name %></p>
-            <a class="Menu-delete ">
-              <%= form_with(url: "/menu_items/#{menu_item.id}" , method: "delete") do %>
-                <% if @current_user.role == "owner" %>
-                  <%= image_submit_tag("trash.svg") %>
+            <%=image_tag(menu_item.img_url,class: "MenuItem-Img")%>
+            <div class="Menus-DivLabel">
+              <h3 class="Menus-display"><%= menu_item.name %></h3>
+              <p><%= menu_item.description %>
+            </div>
+            <div class="Menus-DivItems">
+              <h3>Price: Rs.<%=menu_item.price%></h3>
+              <% if @current_user.role == "owner" %>
+                <a class="Menu-delete ">
+                  <%= form_with(url: "/menu_items/#{menu_item.id}" , method: "delete") do %>
+                      <%= image_submit_tag("trash.svg") %>
+                    <% end %>
+                </a>
+              <% end %>
+              <%= form_with(url: new_order_item_path(menu_item_id: menu_item.id,
+                                                    menu_item_name: menu_item.name,
+                                                    menu_item_price: menu_item.price),
+                              method: "post", class: "Menus") do %>
+                <%= button_tag("Add",type: "submit",class:   "Menus-button") %>
+              <% end %>
+              <% if @current_user.role == "owner" %>
+                <%= link_to edit_menu_item_path(menu_item.id) do%>
+                  <%= image_submit_tag("edit.png",class: "Edit-Icon") %>
                 <% end %>
               <% end %>
-            </a>
-            <%= form_with(url: new_order_item_path(menu_item_id: menu_item.id,
-                                                   menu_item_name: menu_item.name,
-                                                   menu_item_price: menu_item.price),
-                            method: "post", class: "Menus") do %>
-              <%= button_tag("Add",type: "submit",class:   "Menus-button") %>
-            <% end %>
+            </div>
           </div>
         </li>
    <% end %>

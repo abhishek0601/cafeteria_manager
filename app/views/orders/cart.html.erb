@@ -1,26 +1,37 @@
-<section class = "Cart">
-  <h2>My Cart</h2>
-  <table>
-    <tr class = "Title">
-      <th>SNo.</th>
-      <th>Name</th>
-      <th>Price</th>
-    </tr>
-    <% order = @current_user.orders.cart %>
-    <% order_items = order.order_items.all %>
-    <% serial_no = 1 %>
-    <% order.order_items.each do|order_item| %>
-      <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
-        <tr>
-          <td><%= serial_no %></td>
-          <td><%= order_item.menu_item_name %></td>
-          <td><%= order_item.menu_item_price %>
+<% order = @current_user.orders.cart %>
+<% order_items = order.order_items.all %>
+<% if order.total_price > 0%>
+  <section class = "Cart">
+    <div class="SignUp">
+      <h2>My Cart</h2>
+      <table class="Cart-Table">
+        <tr class = "Cart-Title">
+          <th class="Cart-TitleHead">SNo.</th>
+          <th class="Cart-TitleHead">Name</th>
+          <th class="Cart-TitleHead">Quantity</th>
+          <th class="Cart-TitleHead">Price</th>
         </tr>
-        <%serial_no = serial_no + 1%>
+        <% serial_no = 1 %>
+        <% order.order_items.each do|order_item| %>
+          <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+            <tr class="Cart-Title">
+              <td class="Cart-Items"><%= serial_no %></td>
+              <td class="Cart-Items"><%= order_item.menu_item_name %></td>
+              <td class="Cart-Items"><%= order_item.quantity %></td>
+              <td class="Cart-Items"><%= order_item.menu_item_price*order_item.quantity %></td>
+            </tr>
+            <% serial_no = serial_no + 1%>
+        <% end %>
+      </table>
+      <h3>Total Price = <%= order.total_price %> </h3>
+    </div>
+  </section>
+  <div class="SignUp">
+    <%= form_with(url: "/orders/#{order.id}" , method: "put") do %>
+        <%= button_tag("Order",type: "submit", class: "Menus-button")%>
     <% end %>
-  </table>
-</section>
-
-<%= form_with(url: "/orders/#{order.id}" , method: "put") do %>
-    <%= button_tag("Order",type: "submit", class: "Menus-button")%>
+  </div>
+<% else %>
+    <%= image_tag "cart.png",class: "EmptyCart-Img" %>
+    <p class="EmptyCart-Menu"> <%=link_to "Back to Menu" , menus_path,class: "EmptyCart-Link"%></p>
 <% end %>

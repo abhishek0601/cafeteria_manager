@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
   def status
     order = Order.find(params[:id])
     order.delivered = true
+    order.delivered_at = DateTime.now
     order.save
     redirect_to orders_path
   end

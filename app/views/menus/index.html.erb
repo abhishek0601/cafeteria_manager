@@ -1,33 +1,16 @@
- <% if @current_user.role == "owner" %>
-  <h1 class="Menus-title">Menus</h1>
-  <%= form_with(url: "/menus", method: "post", class: "Menus") do %>
-    <p class="Menus-label">Add a Menu:</p>
-      <%= text_field_tag 'name', '' , placeholder: "Add-Menu", class: 'Menus-name'
-      %>
-    <%= button_tag("Add-Menu",type: "submit",class: "Menus-button") %>
+ <div class="Menus-Align">
+  <% if @current_user.role == "owner" %>
+    <h1 class="Menus-title">Menus</h1>
+    <%= form_with(url: "/menus", method: "post", class: "Menus") do %>
+      <p class="Menus-label">Add a Menu:</p>
+        <%= text_field_tag 'name', '' , placeholder: "Add-Menu", class: 'Menus-name'
+        %>
+      <%= button_tag("Add-Menu",type: "submit",class: "Menus-button") %>
+    <% end %>
   <% end %>
-<% end %>
-<h2>Menus-List</h2>
-<ul>
-    <% Menu.all.each do |menu| %>
-        <li class="Menus-view">
-          <div class="Menus-container">
-            <%= form_with(url: "/menus/#{menu.id}" , method: "put") do %>
-              <%= check_box_tag("",
-                  value=nil,
-                  {onclick: "this.form.submit()",
-                  class: "Menus-checkbox"})
-              %>
-            <% end %>
-            <p class="Menus-display"> <%= link_to menu.name,"menus/#{menu.id}"%> </p>
-            <a class="Menu-delete ">
-              <%= form_with(url: "/menus/#{menu.id}" , method: "delete") do %>
-                <% if @current_user.role == "owner" %>
-                  <%= image_submit_tag("trash.svg") %>
-                <% end %>
-              <% end %>
-            </a>
-          </div>
-        </li>
-   <% end %>
-  </ul>
+  <% if @current_user.role == "customer" %>
+    <%= render partial: "show_menu",locals: {menus: Menu.all.where("active=?",true)} %>
+  <% else %>
+    <%= render partial: "show_menu",locals: {menus: Menu.all} %>
+  <% end %>
+</div>

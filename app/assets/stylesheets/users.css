@@ -1,10 +1,12 @@
 .NewUsers-title{
   margin-bottom: 40px;
   font-size: 30px;
+  margin-left: 50px;
 }
 
 .Form-section{
   margin-bottom: 30px;
+  display: inline-flex;
 }
 
 .Form-input{
@@ -13,14 +15,16 @@
 }
 
 .FormInput-label{
-  color: #555555;
+  color: #292525;
   margin-bottom: 8px;
+  font-size: large;
+  font-weight: bold;
 }
 
 .Form-submit{
   font-size: 20px;
   padding: 20px;
-  background-color: rgb(88, 153, 179);
+  background-color: rgb(121, 224, 164);
   border: 0;
   border-radius: 8px;
 }
@@ -54,4 +58,14 @@
 
 .User-container:hover .User-delete{
   visibility:visible;
+}
+
+.UsersNew{
+  margin: 30px;
+}
+
+.UsersNew-div{
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
 }

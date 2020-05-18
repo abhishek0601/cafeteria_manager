@@ -1,0 +1,25 @@
+<section class = "UsersNew">
+  <div class="MenusNew">
+    <%= form_for @menu_item ,{:url => menu_item_path , method: :patch} do |form| %>
+        <div class="Form-section">
+          <p class="FormInput-label">Item Name:</p>
+          <%= form.text_field :name, class: "Form-input",placeholder: "Enter the menu item",autofocus: "autofocus" %>
+        </div>
+        <div class="Form-section">
+          <p class="FormInput-label">Price:</p>
+          <%= form.number_field :price, class: "Form-input"%>
+        </div>
+        <div class="Form-section">
+          <p class="FormInput-label">Image Url:</p>
+          <%= form.text_field :img_url, class: "Form-input",placeholder: "Image Url"%>
+        </div>
+        <div class="Form-section">
+          <p class="FormInput-label">Descrption:</p>
+          <%= form.text_area :description, class: "Form-input"%>
+        </div>
+        <div class="Form-section">
+          <%= form.submit "Edit-Item!", class: "Form-submit"%>
+      </div>
+    <% end %>
+  </div>
+</section>

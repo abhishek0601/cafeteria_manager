@@ -1,29 +1,31 @@
-<p class="NewUsers-title">Welcome New user!</p>
+<div class="SignUp">
+  <p class="NewUsers-title">Welcome New user!</p>
 
-<section class = "UsersNew">
-  <%= form_with url: users_path do |form| %>
-    <div class="Form-section">
-      <p class="FormInput-label">Name:</p>
-      <%= form.text_field :name, class: "Form-input" %>
-    </div>
-    <div class="Form-section">
-      <p class="FormInput-label">Email:</p>
-      <%= form.email_field :email, class: "Form-input"%>
-    </div>
-    <div class="Form-section">
-      <p class="FormInput-label">Phone Number:</p>
-      <%= form.telephone_field :phone_number, class: "Form-input"%>
-    </div>
-    <div class="Form-section">
-      <p class="FormInput-label">Address:</p>
-      <%= form.text_area :address, class: "Form-input"%>
-    </div>
-    <div class="Form-section">
-      <p class="FormInput-label">Password:</p>
-      <%= form.password_field :password, class: "Form-input" %>
-    </div>
-    <div class="Form-section">
-      <%= form.submit "Sign-up!", class: "Form-submit"%>
-    </div>
-  <% end %>
-</section>
+  <section class = "UsersNew">
+    <%= form_with url: users_path do |form| %>
+      <div class="Form-section">
+        <p class="FormInput-label">Name:</p>
+        <%= form.text_field :name, class: "Form-input" %>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">Email:</p>
+        <%= form.email_field :email, class: "Form-input"%>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">Phone Number:</p>
+        <%= form.telephone_field :phone_number, class: "Form-input"%>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">Address:</p>
+        <%= form.text_area :address, class: "Form-input"%>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">Password:</p>
+        <%= form.password_field :password, class: "Form-input" %>
+      </div>
+      <div class="Form-section">
+        <%= form.submit "Sign-up!", class: "Form-submit"%>
+      </div>
+    <% end %>
+  </section>
+</div>

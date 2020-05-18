@@ -21,13 +21,22 @@ class MenusController < ApplicationController
     id = params[:id]
     session[:current_menu_id] = id
     menu = Menu.find(id)
-    render "show_menu", locals: { menu: menu }
+    render "menu_item", locals: { menu: menu }
   end
 
   def destroy
     id = params[:id]
     menu_item = MenuItem.all.find(id)
     menu_item.destroy
+    redirect_to menus_path
+  end
+
+  def update
+    id = params[:id]
+    active = params[:active]
+    menu = Menu.find(id)
+    menu.active = active
+    menu.save!
     redirect_to menus_path
   end
 end

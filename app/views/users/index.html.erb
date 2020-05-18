@@ -1,9 +1,16 @@
  <div class="Navigation">
-          <%= link_to "Home", new_menu_items_home_path%>
-          <%= link_to "Orders", orders_path%>
-          <%= link_to "Menus", menus_path%>
-          <%= link_to "Users", users_path%>
-        </div>
+          <div class="Navigation-Left">
+            <%= image_tag("logo.jpg",class: "Logo-icon") %>
+            <%= image_tag("name.png",class: "Logo-name" )%>
+            <%= link_to "Home", new_menu_items_home_path%>
+          </div>
+          <div class="Navigation-Right">
+            <%= link_to "Orders", orders_path%>
+            <%= link_to "Menus", menus_path%>
+            <%= link_to "Users", users_path%>
+            <%= link_to "Sign-out", destroy_session_path,method: "delete" %>
+          </div>
+</div>
 <h2>Billing Clerk:<h2>
 <ul>
   <% User.clerk.each do |clerk| %>

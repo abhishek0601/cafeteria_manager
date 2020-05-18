@@ -7,21 +7,22 @@
       <li>
         <div class="OrderDetails">
           <div class="OrderDetails-Items">
-            <p>Order id: <%= order.id %></p>
+            <h3>Order Id: <%= order.id %></h3>
             <% order.order_items.each do|order_item| %>
                 <div>
                   <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
-                  <%= order_item.menu_item_name %>
-                  <%= order_item.menu_item_price %>
+                  <%= order_item.menu_item_name %> x <%= order_item.quantity %>
+                  <%= order_item.menu_item_price * order_item.quantity %>
                 </div>
             <% end %>
+           <h3> Total Price: <%= order.total_price%>
           </div>
           <div class="OrderDetails-Status">
             <%if @current_user.role == "customer" %>
               <% if order.delivered %>
-                <p>Delivered</p>
+                <h3 class="Delivered">Delivered at <%= I18n.l(order.delivered_at, format: :long) %>
               <% else %>
-                <p>Pending</p>
+                <h3 class="Status">Status : Pending
               <% end %>
             <% else %>
               <%= form_with(url: order_status_path(id: order.id),

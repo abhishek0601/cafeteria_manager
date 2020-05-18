@@ -17,17 +17,21 @@
   margin: 8px 0;
   border-radius: 4px;
   border: 1px transparent;
-  padding: 13px 25px;
   background-color:rgb(69, 180, 175);
   color: antiquewhite;
   font-weight: 600;
   font-size: medium;
+  padding: 15px 25px;
+  margin-top: auto;
+  margin-left:20px ;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #3e86c0;
+  background-color: #c8d8e6;
+  background: url("food.jpg") no-repeat center fixed;
+  background-size: cover;
 }
 
 .Menus-name{
@@ -53,7 +57,7 @@ body {
   width: 200px;
   border: none;
   font-size: 18px;
-  Menu-select-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  Menu-select-shadow: 0 5px 25px rgba(228, 216, 216, 0.877);
   -webkit-appearance: button;
   appearance: button;
   outline: none;
@@ -71,9 +75,12 @@ body {
 }
 
 .Menus-container{
-  display: inline-flex;
-  padding: 10px 5px;
-  align-items: center;
+  float: left;
+  width: 400px;
+  padding: 10px 10px;
+  background-color: lightgreen;
+  margin: 10px;
+  border-radius: 7%;
 }
 
 .Menus-checkbox{
@@ -89,18 +96,33 @@ ul{
   margin: 0 auto;
 }
 
-.Menus-container{
-  display: inline-flex;
-  padding: 10px 5px;
-  align-items: center;
+.Menus-DivLabel{
+}
+
+.Menus-DivItems{
+  display:flex;
+  align-content: center;
 }
 
 .Menu-delete{
   visibility: hidden;
-  margin-left: 8px;
+  margin-left: 15px;
+  margin-top: 25px;
+}
+
+.Edit-Icon{
+  visibility: hidden;
+  margin-top: 20px;
+  margin-left: 15px;
+  width: 40px;
+  height: 40px;
 }
 
 .Menus-container:hover .Menu-delete{
+  visibility: visible;
+}
+
+.Menus-container:hover .Edit-Icon{
   visibility: visible;
 }
 
@@ -108,8 +130,43 @@ ul{
   font-size: 30px;
   color: rgb(75, 66, 66);
   font-style: oblique;
+  font-weight: bolder;
 }
 
 .MenuItems-Link{
  margin-left: 8px;
+}
+
+.MenusNew{
+  align-items: center;
+  margin-left: 30px;
+}
+
+.MenusNew-Label{
+  margin: 30px;
+}
+
+.Menus-Align{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  box-sizing: content-box;
+  background-color: transparent;
+}
+
+.MenuItem-Img{
+  width: 90%;
+  height: 200px;
+  padding: 10px;
+  margin-right: 10px;
+  align-content: center;
+}
+
+.MenuItems{
+  float: left;
+  height: auto;
+  width: 100%;
+  padding: 15px 15px;
+  margin: 5px;
 }

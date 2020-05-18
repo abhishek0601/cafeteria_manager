@@ -12,13 +12,26 @@
   <body>
     <% if @current_user %>
       <% if @current_user.role == "owner" %>
-        <div class="Navigation">
-          <%= link_to "Home", new_menu_items_home_path%>
-          <%= link_to "Orders", orders_path%>
-          <%= link_to "Menus", menus_path%>
-          <%= link_to "Users", users_path%>
+        <div class="Navigation-Div">
+          <nav class="Navigation">
+                <%= image_tag("logo.jpg",class: "Logo-icon") %>
+                <%= image_tag("name.png",class: "Logo-name" )%>
+                <input class="Navigation-Menu" id="Navigation-Menu" type="checkbox">
+                  <label class="Toggle-Button" for="Navigation-Menu">
+                    <span class="Navigation-Bar"></span>
+                    <span class="Navigation-Bar"></span>
+                    <span class="Navigation-Bar"></span>
+                  </label>
+              <div class="Navigation-Right">
+                <ul class="Navigation-Display">
+                  <li><%= link_to "Orders", orders_path%>
+                  <li><%= link_to "Menus", menus_path%>
+                  <li><%= link_to "Users", users_path%>
+                  <li><%= link_to "Sign-out", destroy_session_path,method: "delete" %>
+                </ul>
+              </div>
+          </nav>
         </div>
-        <%= link_to "Sign-out", destroy_session_path,method: "delete" %>
       <% elsif @current_user.role == "clerk" %>
         <div class="Navigation">
           <%= link_to "Home", new_menu_items_home_path%>
@@ -28,12 +41,18 @@
         <%= link_to "Sign-out", destroy_session_path,method: "delete" %>
       <% else %>
          <div class="Navigation">
-          <%= link_to "Home", new_menu_items_home_path%>
-          <%= link_to "Menus", menus_path%>
-          <%= link_to "My Orders", orders_path%>
-          <%= link_to "Cart", cart_path%>
+          <div class="Navigation-Left">
+            <%= image_tag("logo.jpg",class: "Logo-icon") %>
+            <%= image_tag("name.png",class: "Logo-name" )%>
+            <%= link_to "Home", new_menu_items_home_path%>
+            <%= link_to "Menus", menus_path%>
+          </div>
+          <div class="Navigation-Right">
+            <%= link_to "My Orders", orders_path%>
+            <%= link_to "Cart", cart_path%>
+            <%= link_to "Sign-out", destroy_session_path,method: "delete" %>
+          </div>
          </div>
-         <%= link_to "Sign-out", destroy_session_path,method: "delete" %>
       <% end %>
     <% end %>
     <% if flash[:error] %>
