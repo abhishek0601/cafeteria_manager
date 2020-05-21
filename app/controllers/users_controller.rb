@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       role = "clerk"
     end
     user = User.new(
-      name: params[:name],
+      name: params[:name].capitalize,
       email: params[:email],
       role: role,
       phone_number: params[:phone_number],

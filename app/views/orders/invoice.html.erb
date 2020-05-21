@@ -1,0 +1,39 @@
+<div class="Invoice">
+  <h1 class="Invoice-Label">Invoice</h1>
+  <%= image_tag("logo.jpg",class: "Logo-icon") %>
+  <%= image_tag("name.png",class: "Logo-name" )%>
+  <hr>
+  <hr>
+  <h3>Order Id: <%=order.id%></h3>
+  <h3 class="Invoice-Date">Order Date: <%= order.date %></h3>
+  <h3 class="Invoice-Head">Bill To:</h3>
+  <% user = User.find(order.user_id)%>
+  <div class="Invoice-Details">
+    <p><%= user.name %>
+    <p><%= user.address %>
+    <p><%= user.phone_number %>
+  </div>
+  <h3>Delivered On: <%=order.delivered_at.strftime('%d %b %Y') %></h3>
+  <table class="Invoice-Table">
+        <tr class = "Cart-Title">
+          <th class="Cart-TitleHead">SNo.</th>
+          <th class="Cart-TitleHead">Name</th>
+          <th class="Cart-TitleHead">Quantity</th>
+          <th class="Cart-TitleHead">Unit Price</th>
+          <th class="Cart-TitleHead">Price</th>
+        </tr>
+        <% serial_no = 1 %>
+        <% order.order_items.each do|order_item| %>
+          <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+            <tr class="Cart-Title">
+              <td class="Cart-Items"><%= serial_no %></td>
+              <td class="Cart-Items"><%= order_item.menu_item_name %></td>
+              <td class="Cart-Items"><%= order_item.quantity %></td>
+              <td class="Cart-Items"><%= order_item.menu_item_price%></td>
+              <td class="Cart-Items"><%= order_item.menu_item_price*order_item.quantity %></td>
+            </tr>
+            <% serial_no = serial_no + 1%>
+        <% end %>
+    </table>
+    <h3 class="total-price">Total Price = <%= order.total_price %> </h3>
+</div>

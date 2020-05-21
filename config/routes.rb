@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   post "/order_items" => "order_items#create", as: :new_order_item
   get "/cart" => "orders#new", as: :cart
   put "/status" => "orders#status", as: :order_status
+  get "/orders/:id/invoice" => "orders#invoice", as: :invoice
+  get "/reports" => "orders#reports", as: :reports
+  delete "/order_items/:id" => "order_items#destroy", as: :order_items
+  put "/order_items/update/:id" => "order_items#update", as: :update_order_items
 end

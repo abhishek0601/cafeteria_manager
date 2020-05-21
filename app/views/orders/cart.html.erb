@@ -3,7 +3,11 @@
 <% if order.total_price > 0%>
   <section class = "Cart">
     <div class="SignUp">
+    <% if @current_user.role == "customer" %>
       <h2>My Cart</h2>
+    <% else %>
+      <h2>Order for Walk-In Customer</h2>
+    <% end %>
       <table class="Cart-Table">
         <tr class = "Cart-Title">
           <th class="Cart-TitleHead">SNo.</th>
@@ -17,8 +21,22 @@
             <tr class="Cart-Title">
               <td class="Cart-Items"><%= serial_no %></td>
               <td class="Cart-Items"><%= order_item.menu_item_name %></td>
-              <td class="Cart-Items"><%= order_item.quantity %></td>
+              <td class="Cart-Items">
+                <div class="Counter">
+                  <% menu_item = MenuItem.find(order_item.menu_item_id)%>
+                  <%= button_to "-", update_order_items_path(id: order_item.id,route: "cart", update: "-",menu_id: menu_item.menu_id), :method => :put %>
+                  <h3><%= order_item.quantity %></h3>
+                  <%= button_to "+", update_order_items_path(id: order_item.id,route: "cart", update: "+",menu_id: menu_item.menu_id), :method => :put %>
+                </div>
+              </td>
               <td class="Cart-Items"><%= order_item.menu_item_price*order_item.quantity %></td>
+              <td>
+                <a>
+                    <%= form_with(url: "/order_items/#{order_item.id}" , method: "delete") do %>
+                        <%= image_submit_tag("trash.svg") %>
+                    <% end %>
+                </a>
+              </td>
             </tr>
             <% serial_no = serial_no + 1%>
         <% end %>

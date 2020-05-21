@@ -16,11 +16,24 @@
                     <% end %>
                 </a>
               <% end %>
-              <%= form_with(url: new_order_item_path(menu_item_id: menu_item.id,
-                                                    menu_item_name: menu_item.name,
-                                                    menu_item_price: menu_item.price),
-                              method: "post", class: "Menus") do %>
-                <%= button_tag("Add",type: "submit",class:   "Menus-button") %>
+              <% order = @current_user.orders.cart
+                 check = order.order_items.exists?(:menu_item_name => menu_item.name)
+                 order_item = order.order_items.find_by(menu_item_name: menu_item.name)%>
+              <% if check %>
+                <div class="Counter">
+                  <%= button_to "-", update_order_items_path(id: order_item.id, update: "-",menu_id: menu_item.menu_id), :method => :put %>
+                  <h3><%= order_item.quantity %></h3>
+                  <%= button_to "+", update_order_items_path(id: order_item.id, update: "+",menu_id: menu_item.menu_id), :method => :put %>
+                </div>
+              <% else %>
+                <%= form_with(url: new_order_item_path(menu_item_id: menu_item.id,
+                                                      menu_item_name: menu_item.name,
+                                                      menu_item_price: menu_item.price,
+                                                      menu_id: menu_item.menu_id
+                                                      ),
+                                method: "post", local: true,class: "Menus") do %>
+                  <%= button_tag("Add",type: "submit",class:   "Menus-button") %>
+                <% end %>
               <% end %>
               <% if @current_user.role == "owner" %>
                 <%= link_to edit_menu_item_path(menu_item.id) do%>

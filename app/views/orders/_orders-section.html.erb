@@ -6,6 +6,9 @@
     <% orders.each do |order| %>
       <li>
         <div class="OrderDetails">
+          <% if order.delivered %>
+            <%= link_to "Invoice" , invoice_path(id: order.id),class: "Invoice-link"%>
+          <% end %>
           <div class="OrderDetails-Items">
             <h3>Order Id: <%= order.id %></h3>
             <% order.order_items.each do|order_item| %>

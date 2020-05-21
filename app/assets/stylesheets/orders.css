@@ -55,6 +55,7 @@
 .Cart-Items{
   border: 1px solid #ddd;
   padding: 8px;
+  height: 35px;
 }
 
 .Delivered{
@@ -93,4 +94,74 @@
   font-family: sans-serif;
   text-transform: uppercase;
   padding: 10px 10px;
+}
+
+.Invoice-link{
+  float: right;
+}
+
+.Invoice-Label{
+  float: right;
+  margin-right: 20px;
+}
+
+.Invoice .Invoice-Table{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  height: fit-content;
+  margin:0 auto;
+}
+
+.Invoice{
+  margin: auto;
+  margin-left: 70px;
+  margin-top: 50px;
+  width: 65%;
+  height: 750px;
+  padding: 10px;
+  display: inline-block;
+  border-style: solid;
+  border-color: rgb(15, 123, 196);
+  background-color: ivory;
+}
+
+.total-price{
+  float: right;
+  margin: 20px 20px;
+}
+
+.Invoice-Date{
+  float: right;
+}
+
+.Invoice-Details{
+  margin-left: 60px ;
+}
+
+.Invoice-Head{
+  background-color: skyblue;
+  width: fit-content;
+}
+
+.Reports-Form{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  box-sizing: content-box;
+  background-color: transparent;
+}
+
+.Reports-Table{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  height: fit-content;
+  margin-left: 40px;
+}
+
+.Counter{
+  display: inline-flex;
+  align-items: center;
 }
