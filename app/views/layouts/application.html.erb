@@ -11,7 +11,6 @@
 
   <body>
     <% if @current_user %>
-      <% if @current_user.role == "owner" %>
         <div class="Navigation-Div">
           <nav class="Navigation">
                 <%= image_tag("logo.jpg",class: "Logo-icon") %>
@@ -23,39 +22,45 @@
                     <span class="Navigation-Bar"></span>
                   </label>
               <div class="Navigation-Right">
-                <ul class="Navigation-Display">
-                  <li><%= link_to "Walk-In", cart_path%>
-                  <li><%= link_to "Orders", orders_path%>
-                  <li><%= link_to "Menus", menus_path%>
-                  <li><%= link_to "Users", users_path%>
-                  <li><%= link_to "Reports", reports_path %>
-                  <li><%= link_to "Sign-out", destroy_session_path,method: "delete" %>
+                 <ul class="Navigation-Display">
+                 <% if @current_user.role == "owner" %>
+                    <li> <%= link_to "Walk-In", cart_path%></li>
+                    <li><%= link_to "Orders", orders_path%></li>
+                    <li><%= link_to "Menus", menus_path%></li>
+                    <div class="Navigation-Dropdown">
+                      <li>
+                        <button class="Navigation-Button"><%= @current_user.name.first.upcase %><%=@current_user.name%></button>
+                      </li>
+                        <div class="Navigation-Content">
+                           <li><%= link_to "Users", users_path%></li>
+                           <li><%= link_to "Reports", reports_path %></li>
+                           <li><%= link_to "Sign-out", destroy_session_path,method: "delete" %></li>
+                        </div>
+                    </div>
+                <% elsif @current_user.role == "clerk" %>
+                      <li><%= link_to "Home", new_menu_items_home_path%>
+                      <li><%= link_to "Walk-In", cart_path%>
+                      <li><%= link_to "Orders", orders_path%>
+                      <li><%= link_to "Menus", menus_path%>
+                      <li><%= link_to "Sign-out", destroy_session_path,method: "delete" %>
+                <% else %>
+                      <li><%= link_to "Home", new_menu_items_home_path%>
+                      <li><%= link_to "Menus", menus_path%></li>
+                      <li><%= link_to "Cart", cart_path%></li>
+                      <div class="Navigation-Dropdown">
+                        <li>
+                          <button class="Navigation-Button"><%= @current_user.name.first.upcase %><%=@current_user.name%></button>
+                        </li>
+                        <div class="Navigation-Content">
+                          <li><%= link_to "My Orders", orders_path%></li>
+                          <li><%= link_to "Sign-out", destroy_session_path,method: "delete" %></li>
+                        </div>
+                      </div>
+                <% end %>
                 </ul>
               </div>
           </nav>
         </div>
-      <% elsif @current_user.role == "clerk" %>
-        <div class="Navigation">
-          <%= link_to "Home", new_menu_items_home_path%>
-          <%= link_to "Orders", orders_path%>
-          <%= link_to "Menus", menus_path%>
-        </div>
-        <%= link_to "Sign-out", destroy_session_path,method: "delete" %>
-      <% else %>
-         <div class="Navigation">
-          <div class="Navigation-Left">
-            <%= image_tag("logo.jpg",class: "Logo-icon") %>
-            <%= image_tag("name.png",class: "Logo-name" )%>
-            <%= link_to "Home", new_menu_items_home_path%>
-            <%= link_to "Menus", menus_path%>
-          </div>
-          <div class="Navigation-Right">
-            <%= link_to "My Orders", orders_path%>
-            <%= link_to "Cart", cart_path%>
-            <%= link_to "Sign-out", destroy_session_path,method: "delete" %>
-          </div>
-         </div>
-      <% end %>
     <% end %>
     <% if flash[:error] %>
       <p class="Flash-error"> <%= flash[:error] %> </p>

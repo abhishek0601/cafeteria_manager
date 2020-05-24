@@ -51,16 +51,20 @@
 
 .Navigation a {
   float: left;
-  color: #050404;
+  color: #dddddd;
   text-align: center;
   padding: 20px 20px;
   text-decoration: none;
   font-size: x-large;
+  background-color: rgb(14, 35, 128);
+  border: 1px solid rgb(17, 17, 31);
+  border-radius: 25px;
 }
 
 .Navigation a:hover {
-  background-color:white;
-  color: rgb(30, 65, 19);
+  color: rgba(103, 221, 211);
+  text-decoration: underline;
+  text-decoration-color: white;
 }
 
 .Navigation a.active {
@@ -128,10 +132,88 @@
   padding-right: 30px;
 }
 
-.Navigation-Menu{
+.Navigation-Dropdown{
+  float:right;
+  display: block;
+  overflow: hidden;
+}
+
+.Navigation-Content{
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.Navigation-Content li{
+  color: black;
+  padding: 7px 7px;
+  text-decoration: none;
+  display: flex;
+}
+
+.Navigation-Button{
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color:black;
+  padding: 16px;
+  cursor: pointer;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  text-align: center;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: x-large;
+}
+
+.Navigation-Dropdown:hover .Navigation-Content{
+  display: inline-block;
+}
+
+.Home-svg{
+  width: 50px;
+  height: auto;
+}
+
+.Home-Align{
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.Home-Align a{
+  color:rgb(8, 8, 80) ;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  padding: 20px 10px;
+  font-weight: bold;
+  font-size: large;
+}
+
+.HomeLink-Div:hover a{
+  color: darkred;
+  text-decoration: underline;
+  text-decoration-color: darkblue;
 
 }
 
+.HomeLink-Div{
+  display: flex;
+  text-align: center;
+  background-color: skyblue;
+  width: 150px;
+  border: rgb(12, 8, 53);
+  border-radius: 20px;
+  padding: 10px 10px;
+  text-align: center;
+  margin-left: 20px ;
+}
 
 @media(max-width: 950px){
   .Toggle-Button{

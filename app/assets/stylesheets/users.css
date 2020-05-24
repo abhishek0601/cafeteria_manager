@@ -1,32 +1,65 @@
 .NewUsers-title{
-  margin-bottom: 40px;
-  font-size: 30px;
-  margin-left: 50px;
+  margin:0 0 25px 0;
+  padding:10px;
+  text-align:center;
+  font-size:30px;
+  color:darken(#e5e5e5, 50%);
+  border-bottom:solid 1px #e5e5e5;
 }
 
 .Form-section{
-  margin-bottom: 30px;
-  display: inline-flex;
+  margin: 0 0 50px 0;
+  position: relative;
 }
 
 .Form-input{
-  font-size: 20px;
-  padding: 8px;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  margin:0;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  font-size: 25px;
+  padding: 10px 10px;
+  border-radius: 2px;
 }
 
 .FormInput-label{
-  color: #292525;
-  margin-bottom: 8px;
-  font-size: large;
-  font-weight: bold;
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+  padding: 4px 10px;
+  font-weight: 400;
+  background-color: rgba(255,255,255,0);
+  top: -11px;
+  background-color: rgba(255,255,255,0.8);
+  font-size: 14px;
 }
 
 .Form-submit{
-  font-size: 20px;
-  padding: 20px;
-  background-color: rgb(121, 224, 164);
-  border: 0;
-  border-radius: 8px;
+  background: rgb(24, 235, 235);
+  box-shadow: 0 3px 0 0 darken(rgb(24,235,235), 10%);
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 35px;
+  line-height: 30px;
+  margin: 0 auto;
+  outline: none;
+  padding: 10px;
+  text-shadow: 0 1px #68B25B;
+  width: 80%;
+}
+
+.Form-submit:hover{
+  background: rgb(22, 190, 196);
+  text-shadow:0 1px 3px darken(rgb(24,235,235), 30%);
 }
 
 .Users-label{
@@ -47,10 +80,6 @@
   align-items: center;
 }
 
-.User-name{
-
-}
-
 .User-delete{
   visibility: hidden;
   margin-left: 8px;
@@ -61,7 +90,12 @@
 }
 
 .UsersNew{
-  margin: 30px;
+  background: #fff;
+  padding: 20px 20px 10px;
+  max-width: 500px;
+  margin: 50px auto 0;
+  box-shadow: 0 0 30px #222;
+  border-radius: 2px;
 }
 
 .UsersNew-div{

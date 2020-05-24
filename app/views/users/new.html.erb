@@ -1,31 +1,28 @@
-<div class="SignUp">
-  <p class="NewUsers-title">Welcome New user!</p>
-
   <section class = "UsersNew">
+    <h2 class="NewUsers-title">Sign Up!!</h2>
     <%= form_with url: users_path do |form| %>
-      <div class="Form-section">
-        <p class="FormInput-label">Name:</p>
+      <p class="Form-section">
+        <label class="FormInput-label">Name:</label>
         <%= form.text_field :name, class: "Form-input" %>
-      </div>
-      <div class="Form-section">
-        <p class="FormInput-label">Email:</p>
+      </p>
+      <p class="Form-section">
+        <label class="FormInput-label">Email:</label>
         <%= form.email_field :email, class: "Form-input"%>
-      </div>
-      <div class="Form-section">
-        <p class="FormInput-label">Phone Number:</p>
+      </p>
+      <p class="Form-section">
+        <label class="FormInput-label">Phone Number:</label>
         <%= form.telephone_field :phone_number, class: "Form-input"%>
-      </div>
-      <div class="Form-section">
-        <p class="FormInput-label">Address:</p>
+      </p>
+      <p class="Form-section">
+        <label class="FormInput-label">Address:</label>
         <%= form.text_area :address, class: "Form-input"%>
-      </div>
-      <div class="Form-section">
-        <p class="FormInput-label">Password:</p>
+      </p>
+      <p class="Form-section">
+        <label class="FormInput-label">Password:</label>
         <%= form.password_field :password, class: "Form-input" %>
-      </div>
-      <div class="Form-section">
+      </p>
+      <p class="Form-section">
         <%= form.submit "Sign-up!", class: "Form-submit"%>
-      </div>
+      </p>
     <% end %>
   </section>
-</div>

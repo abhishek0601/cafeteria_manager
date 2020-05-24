@@ -3,10 +3,16 @@
     <%= image_tag("logo.jpg",class: "Logo-icon") %>
     <%= image_tag("name.png",class: "Logo-name" )%>
   </div>
-  <div class="Navigation-Right">
-    <%= link_to "Sign-up", new_user_path%>
-    <%=link_to "Sign-in",new_sessions_path%>
-  </div>
 </div>
 <br>
 <img src="animation.gif" class="Home-gif">
+<div class="Home-Align">
+    <div class="HomeLink-Div">
+     <%= image_tag("signup.svg",class: "Home-svg")%>
+     <%= link_to "Sign-up", new_user_path%>
+    </div>
+    <div class="HomeLink-Div">
+      <%= image_tag("login.svg",class: "Home-svg")%>
+      <%=link_to "Log-in",new_sessions_path%>
+    </div>
+</div>
