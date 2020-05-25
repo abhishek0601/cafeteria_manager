@@ -32,74 +32,82 @@
 }
 
 .Navigation {
-  overflow: hidden;
   background-image: linear-gradient(to right,#005aa7,#fffde4);
-  margin: auto;
+  display: block;
+  height: 70px;
+  width: 100%;
 }
 
-.Navigation ul{
-  display: flex;
+.Navigation-Display{
+  list-style: none;
+  background-image: linear-gradient(to right,#005aa7,#fffde4);
+  width: 100%;
 }
 
-.Navigation-Div{
-  clear: both;
-}
-
-.Navigation-Div{
-  display: inline;
-}
-
-.Navigation a {
+.Navigation-Display li{
   float: left;
-  color: #dddddd;
-  text-align: center;
-  padding: 20px 20px;
-  text-decoration: none;
-  font-size: x-large;
-  background-color: rgb(14, 35, 128);
-  border: 1px solid rgb(17, 17, 31);
-  border-radius: 25px;
+  position: relative;
 }
 
-.Navigation a:hover {
-  color: rgba(103, 221, 211);
-  text-decoration: underline;
-  text-decoration-color: white;
-}
-
-.Navigation a.active {
-  background-color: #4CAF50;
-  color:rgb(25, 203, 226);
-}
-
-.Navigation-Right{
+.Navigation-right{
   float: right;
 }
 
-.Navigation-Left{
-  display: inline-flex;
-  float: left;
+.Navigation a{
+  display: block;
+  padding: 20px;
+  font-size: 25px;
+  text-decoration: none;
 }
 
-.Navigation-Bar{
-  height: 3px;
-  width: 100%;
-  background-color: black;
-  border-radius: 10px;
+.Navigation a:hover {
+  background: skyblue;
+  color: rgb(15, 39, 37);
+  transition: 0.5s;
 }
 
-.Toggle-Button{
+.Navigation a.active {
+  background: #4CAF50;
+  color:rgb(25, 203, 226);
+}
+
+.Navigation-Dropdown{
   position: absolute;
-  top: .75rem;
-  right: 1rem;
+  top: 70px;
+  right: 0px;
+  width: 180px;
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  padding: 25px 25px;
-  cursor: pointer;
 }
+
+.Navigation-Display li:hover .Navigation-Dropdown{
+  display:block ;
+}
+
+.Navigation-Dropdown li{
+  width: 100%;
+}
+
+.Navigation-Dropdown li:hover ul {
+  display: block;
+}
+
+.Navigation-Dropdown li a{
+  padding: 20px;
+  background: white;
+}
+
+.Navigation .Menu-Toggle{
+  display: none;
+}
+
+.Icons-Align{
+  align-self: center;
+}
+
+.Icon-Div{
+  display: flex;
+}
+
 
 .SignUp{
   display: block;
@@ -108,6 +116,12 @@
   width: 40%;
   box-sizing: content-box;
   background-color: transparent;
+}
+
+.Icon{
+  width: 30px;
+  height: 30px;
+  align-self:center;
 }
 
 .Home-gif{
@@ -121,58 +135,15 @@
 }
 
 .Logo-icon{
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 60px;
 }
 
 .Logo-name{
-  height: 80px;
-  width: 340px;
+  height: 70px;
+  width: 320px;
   padding-left: 6px;
   padding-right: 30px;
-}
-
-.Navigation-Dropdown{
-  float:right;
-  display: block;
-  overflow: hidden;
-}
-
-.Navigation-Content{
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f9f9f9;
-  min-width: 250px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.Navigation-Content li{
-  color: black;
-  padding: 7px 7px;
-  text-decoration: none;
-  display: flex;
-}
-
-.Navigation-Button{
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color:black;
-  padding: 16px;
-  cursor: pointer;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-  text-align: center;
-  padding: 20px 20px;
-  text-decoration: none;
-  font-size: x-large;
-}
-
-.Navigation-Dropdown:hover .Navigation-Content{
-  display: inline-block;
 }
 
 .Home-svg{
@@ -215,25 +186,73 @@
   margin-left: 20px ;
 }
 
-@media(max-width: 950px){
-  .Toggle-Button{
-    display: flex;
+.Top-Nav{
+  cursor: pointer;
+}
+
+.Toggle{
+  display: none;
+}
+
+@media(max-width: 1000px){
+  .Navigation-Display{
+    width: 100%;
+    background: #0e94a0;
+    overflow: hidden;
+    max-height: 0px;
   }
 
-  .Navigation-Div{
-    flex-direction: column;
-    align-items: flex-start;
-  }
   .Navigation ul{
     width: 100%;
-    flex-direction: column;
-    clear: both;
   }
-  .Navigation a{
-    text-align: center;
+
+  .Navigation-Display li{
+    width: 100%;
+    box-align: center;
+    box-sizing: inherit;
   }
-  .Navigation-Menu:checked ~ .Navigation-Display{
-    max-height: 240px;
-    display: flex;
+
+  .Navigation{
+    position: relative;
+  }
+
+  .Navigation-right{
+    float:none;
+    width: 100%;
+  }
+
+ .Navigation .Navigation-Dropdown{
+    position: static;
+    display: block;
+    width: 100%;
+  }
+
+  .Navigation-Dropdown li a{
+    background: #43bec9;
+    width: 100%;
+  }
+
+  .Navigation .Menu-Toggle{
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 200%;
+  }
+
+  .Toggle{
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    visibility: hidden;
+  }
+
+  .Toggle:checked ~ .Navigation-Display{
+    max-height: 700px;
+  }
+
+  .Toggle:checked ~ .Navigation-Dropdown{
+    max-height: fit-content;
   }
 }

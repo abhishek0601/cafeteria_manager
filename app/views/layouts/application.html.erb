@@ -7,60 +7,130 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
 
   <body>
     <% if @current_user %>
-        <div class="Navigation-Div">
-          <nav class="Navigation">
+          <header class="Navigation">
                 <%= image_tag("logo.jpg",class: "Logo-icon") %>
                 <%= image_tag("name.png",class: "Logo-name" )%>
-                <input class="Navigation-Menu" id="Navigation-Menu" type="checkbox">
-                  <label class="Toggle-Button" for="Navigation-Menu">
-                    <span class="Navigation-Bar"></span>
-                    <span class="Navigation-Bar"></span>
-                    <span class="Navigation-Bar"></span>
-                  </label>
-              <div class="Navigation-Right">
-                 <ul class="Navigation-Display">
-                 <% if @current_user.role == "owner" %>
-                    <li> <%= link_to "Walk-In", cart_path%></li>
-                    <li><%= link_to "Orders", orders_path%></li>
-                    <li><%= link_to "Menus", menus_path%></li>
-                    <div class="Navigation-Dropdown">
+              <div class="Navigation-right">
+                <label for="Toggle">
+                  <i class="fa fa-bars Menu-Toggle" id='Menu-Toggle'></i>
+                </label>
+                <input type="checkbox" class="Toggle" id="Toggle">
+                <ul class="Navigation-Display" id='Nav-ul'>
+                  <% if @current_user.role == "owner" %>
                       <li>
-                        <button class="Navigation-Button"><%= @current_user.name.first.upcase %><%=@current_user.name%></button>
+                        <%= link_to new_menu_items_home_path do%>
+                          <i class="fa fa-home Icons-Align"></i>
+                          Home
+                        <%end%>
                       </li>
-                        <div class="Navigation-Content">
-                           <li><%= link_to "Users", users_path%></li>
-                           <li><%= link_to "Reports", reports_path %></li>
-                           <li><%= link_to "Sign-out", destroy_session_path,method: "delete" %></li>
-                        </div>
-                    </div>
-                <% elsif @current_user.role == "clerk" %>
-                      <li><%= link_to "Home", new_menu_items_home_path%>
-                      <li><%= link_to "Walk-In", cart_path%>
-                      <li><%= link_to "Orders", orders_path%>
-                      <li><%= link_to "Menus", menus_path%>
-                      <li><%= link_to "Sign-out", destroy_session_path,method: "delete" %>
-                <% else %>
-                      <li><%= link_to "Home", new_menu_items_home_path%>
+                      <li>
+                        <%= link_to cart_path do%>
+                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                          Walk In
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to menus_path do%>
+                          <%= image_tag("menu.svg",class:"Icon")%>
+                          Menus
+                        <% end %>
+                      </li>
+                      <li>
+                          <a>
+                            <i class="fa fa-user"></i>
+                            <%=@current_user.name%>
+                            <i class="fa fa-chevron-down"></i>
+                          </a>
+                          <ul class="Navigation-Dropdown" id='Nav-ul'>
+                            <li><%= link_to "Orders", orders_path%></li>
+                            <li>
+                              <%= link_to users_path do%>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                Users
+                              <% end %>
+                            </li>
+                            <li>
+                              <%= link_to reports_path do %>
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                Reports
+                              <% end %>
+                            </li>
+                            <li>
+                                <%= link_to destroy_session_path,method: "delete" do %>
+                                  <i class="fa fa-sign-out"></i>
+                                  Sign-Out
+                                <% end %>
+                            </li>
+                          </ul>
+                      </li>
+                  <% elsif @current_user.role == "clerk" %>
+                      <li>
+                        <%= link_to new_menu_items_home_path do%>
+                          <i class="fa fa-home Icons-Align"></i>
+                          Home
+                        <%end%>
+                      </li>
+                      <li>
+                        <%= link_to cart_path do%>
+                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                          Walk In
+                        <% end %>
+                      </li>
                       <li><%= link_to "Menus", menus_path%></li>
-                      <li><%= link_to "Cart", cart_path%></li>
-                      <div class="Navigation-Dropdown">
-                        <li>
-                          <button class="Navigation-Button"><%= @current_user.name.first.upcase %><%=@current_user.name%></button>
-                        </li>
-                        <div class="Navigation-Content">
-                          <li><%= link_to "My Orders", orders_path%></li>
-                          <li><%= link_to "Sign-out", destroy_session_path,method: "delete" %></li>
-                        </div>
-                      </div>
-                <% end %>
+                      <li>
+                        <a>
+                          <i class="fa fa-user"></i>
+                          <%=@current_user.name%>
+                          <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <ul class="Navigation-Dropdown">
+                            <li><%= link_to "Orders", orders_path%>
+                            <li>
+                                <%= link_to destroy_session_path,method: "delete" do %>
+                                  <i class="fa fa-sign-out"></i>
+                                  Sign-Out
+                                <% end %>
+                            </li>
+                        </ul>
+                      </li>
+                  <% else %>
+                      <li>
+                        <%= link_to new_menu_items_home_path do%>
+                          <i class="fa fa-home Icons-Align"></i>
+                          Home
+                        <%end%>
+                      </li>
+                      <li><%= link_to "Menus", menus_path%></li>
+                      <li>
+                        <%= link_to cart_path do%>
+                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                          Cart
+                        <% end %>
+                      </li>
+                      <li>
+                        <a>
+                          <i class="fa fa-user"></i>
+                          <%=@current_user.name%>
+                          <i class="fa fa-chevron-down"></i>
+                        </a>
+                          <ul class="Navigation-Dropdown">
+                            <li><%= link_to "My Orders", orders_path%></li>
+                            <li>
+                                <%= link_to destroy_session_path,method: "delete" do %>
+                                  <i class="fa fa-sign-out"></i>
+                                  Sign-Out
+                                <% end %>
+                            </li>
+                          </ul>
+                  <% end %>
                 </ul>
               </div>
-          </nav>
-        </div>
+          </header>
     <% end %>
     <% if flash[:error] %>
       <p class="Flash-error"> <%= flash[:error] %> </p>
@@ -69,5 +139,6 @@
       <p class="Flash-success"> <%= flash[:success] %> </p>
     <% end %>
     <%= yield %>
+
   </body>
 </html>
