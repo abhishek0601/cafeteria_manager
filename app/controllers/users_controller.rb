@@ -7,9 +7,6 @@ class UsersController < ApplicationController
 
   def create
     role = "customer"
-    if session[:current_user_id]
-      role = "clerk"
-    end
     user = User.new(
       name: params[:name].capitalize,
       email: params[:email],
@@ -40,6 +37,13 @@ class UsersController < ApplicationController
     id = params[:id]
     user = User.all.find(id)
     user.destroy
+    redirect_to users_path
+  end
+
+  def change_role
+    user = User.find(params[:id])
+    user.role = params[:role]
+    user.save(validate: false)
     redirect_to users_path
   end
 end

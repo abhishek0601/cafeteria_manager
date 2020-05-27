@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get "/reports" => "orders#reports", as: :reports
   delete "/order_items/:id" => "order_items#destroy", as: :order_items
   put "/order_items/update/:id" => "order_items#update", as: :update_order_items
+  get "/all_orders" => "orders#all_orders", as: :all_orders
+  patch "/users/:id/change_role" => "users#change_role", as: :change_user_role
 end

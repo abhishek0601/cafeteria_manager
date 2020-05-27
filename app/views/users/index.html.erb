@@ -1,18 +1,12 @@
-<h2>Billing Clerk:<h2>
-<ul>
-  <% User.clerk.each do |clerk| %>
-    <li class="User">
-      <div class="User-container">
-        <p class = "User-name"><%=clerk.name%></p>
-        <a class="User-delete ">
-                <%= form_with(url: "/users/#{clerk.id}" , method: "delete") do %>
-                  <%= image_submit_tag("trash.svg") %>
-                <% end %>
-        </a>
-      </div>
-    </li>
-  <% end %>
-</ul>
-<div class="Users">
-<h3>Add User:<%= link_to "Add-User", new_user_path%></h3>
-</div>
+<main class="UsersPageMain">
+  <article>
+      <%= render partial:"users-section", locals: {
+        users: User.all.where("role=?","clerk"),
+        user_title: "Billing Clerks"
+      } %>
+      <%= render partial:"users-section", locals: {
+        users: User.all.where("role=?","customer"),
+        user_title: "Customers"
+      } %>
+  </article>
+</main>

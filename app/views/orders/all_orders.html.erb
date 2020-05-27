@@ -1,0 +1,31 @@
+  <section class="OrdersSection">
+    <div class="OrdersSection-Title">
+      <h2 class="OrdersSection-title">All Orders</h2>
+    </div>
+    <ul>
+      <% Order.all.where("delivered=?",true).each do |order| %>
+        <li>
+          <div class="OrderDetails">
+            <% if order.delivered %>
+              <%= link_to "Invoice" , invoice_path(id: order.id),class: "Invoice-link"%>
+            <% end %>
+            <div class="OrderDetails-Items">
+              <h3>Order Id: <%= order.id %></h3>
+              <% order.order_items.each do|order_item| %>
+                  <div>
+                    <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+                    <%= order_item.menu_item_name %> x <%= order_item.quantity %>
+                    <%= order_item.menu_item_price * order_item.quantity %>
+                  </div>
+              <% end %>
+            <h3> Total Price: <%= order.total_price%>
+            </div>
+            <div class="OrderDetails-Status">
+                  <h3 class="Delivered">Delivered at <%= I18n.l(order.delivered_at, format: :long) %>
+            </div>
+          </div>
+        </li>
+        <hr>
+      <% end %>
+    </ul>
+</section>

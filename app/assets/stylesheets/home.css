@@ -94,6 +94,7 @@
 .Navigation-Dropdown li a{
   padding: 20px;
   background: white;
+  width: 600px;
 }
 
 .Navigation .Menu-Toggle{

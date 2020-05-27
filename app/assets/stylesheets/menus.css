@@ -3,7 +3,7 @@
 }
 
 .Menus{
-  display:inline-flex;
+  display: grid;
   margin-top: 20px;
   margin-left: 10px;
 }
@@ -77,7 +77,7 @@ body {
   float: left;
   width: 400px;
   padding: 10px 10px;
-  background-color: lightgreen;
+  background-color: rgb(194, 233, 194);
   margin: 10px;
   border-radius: 7%;
 }
