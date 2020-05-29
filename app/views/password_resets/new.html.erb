@@ -1,0 +1,11 @@
+<div class="Reports-Form">
+  <h2>Reset Password</h2>
+
+  <%= form_tag password_resets_path, :method => :post do %>
+    <p class="Form-section">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, params[:email],class: "Report-input" %>
+      <%= submit_tag "Reset Password" %>
+    </p>
+  <% end %>
+</div>
