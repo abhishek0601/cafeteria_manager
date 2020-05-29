@@ -21,7 +21,7 @@
                  order_item = order.order_items.find_by(menu_item_name: menu_item.name)%>
               <% if check %>
                 <div class="Counter">
-                  <%= button_to "-", update_order_items_path(id: order_item.id, update: "-",menu_id: menu_item.menu_id), :method => :put %>
+                  <%= button_to "-", update_order_items_path(id: order_item.id, update: "-",menu_id: menu_item.menu_id), :method => :put,class: "Quantity-Button" %>
                   <h3 class="Quantity"><%= order_item.quantity %></h3>
                   <%= button_to "+", update_order_items_path(id: order_item.id, update: "+",menu_id: menu_item.menu_id), :method => :put %>
                 </div>

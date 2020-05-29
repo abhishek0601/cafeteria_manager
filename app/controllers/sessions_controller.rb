@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
-  skip_before_action :ensure_user_logged_in
+  skip_before_action :ensure_user_logged_in, :except => [:home]
 
   def new
+  end
+
+  def home
+    render "home"
   end
 
   def create
@@ -9,7 +13,7 @@ class SessionsController < ApplicationController
     if user and user.authenticate(params[:password])
       flash[:success] = "Logged-in Succesfully"
       session[:current_user_id] = user.id
-      redirect_to new_menu_items_home_path
+      redirect_to sessions_home_path
     else
       flash[:error] = "Your Login attempt was invalid.Please Retry"
       redirect_to new_sessions_path

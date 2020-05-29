@@ -1,5 +1,7 @@
 class MenusController < ApplicationController
   before_action :ensure_user_logged_in
+  before_action :ensure_owner_logged_in, :only => [:create, :destroy]
+  before_action :ensure_staff_logged_in, :only => [:update]
 
   def index
     render "index"
@@ -10,6 +12,7 @@ class MenusController < ApplicationController
       name: params[:name],
     )
     if new_menu.save
+      flash[:success] = "Menu added successfully"
       redirect_to menus_path
     else
       flash[:error] = new_menu.errors.full_messages.join(", ")

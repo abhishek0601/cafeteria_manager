@@ -7,6 +7,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_owner_logged_in
+    unless current_user.role == "owner"
+      redirect_to "/home"
+    end
+  end
+
+  def ensure_staff_logged_in
+    unless current_user.role != "customer"
+      redirect_to "/home"
+    end
+  end
+
   def current_user
     return @current_user if @current_user
 

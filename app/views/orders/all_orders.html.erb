@@ -6,6 +6,12 @@
       <% Order.all.where("delivered=?",true).each do |order| %>
         <li>
           <div class="OrderDetails">
+            <% user = User.find(order.user_id)%>
+            <% if user.role == "customer"%>
+              <h2><%= user.name %></h2>
+            <% else %>
+              <h2>Walk In Customer(Ordered by <%= user.name %>)</h2>
+            <% end %>
             <% if order.delivered %>
               <%= link_to "Invoice" , invoice_path(id: order.id),class: "Invoice-link"%>
             <% end %>

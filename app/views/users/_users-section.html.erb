@@ -1,28 +1,32 @@
-<h2><%= user_title %><h2>
-<ul>
-  <% users.each do |user| %>
-    <li class="User">
-      <div class="User-container">
-        <p class = "User-name"><%= user.name%></p>
-<!--        <% if user.role == "customer" %>
-          <%= form_with(url: change_user_role_path(id: user.id,role: "clerk"),local: true,method: "patch") do %>
-            <%= submit_tag "Role"%>
-          <% end %>
-        <% else %>
-           <%= form_with(url: change_user_role_path(id: user.id,role: "customer"),local: true,method: "patch") do %>
-            <%= submit_tag "Role"%>
-          <% end %>
-        <% end %> -->
-        <% role = user.role == "customer" ? "clerk" : "customer" %>
-        <%= form_for(user, url: change_user_role_path(id: user.id,role: role)) do %>
-           <%= select_tag "role",options_for_select(["clerk","customer"],user.role), :onchange => 'this.form.submit();' %>
-        <% end %>
-        <a class="User-delete ">
-                <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
+<h2 class="User-Title"><%= user_title %></h2>
+ <table class="Cart-Table">
+   <tr class = "Cart-Title">
+     <th class="Cart-TitleHead">User Id</th>
+     <th class="Cart-TitleHead">Name</th>
+     <th class="Cart-TitleHead">Email</th>
+     <th class="Cart-TitleHead">Phone Number</th>
+     <th class="Cart-TitleHead">Role</th>
+   </tr>
+    <% users.each do |user| %>
+        <div class="User-container">
+         <tr class="Cart-Title">
+            <td class="Cart-Items"><%= user.id %>
+            <td class="Cart-Items"><p class = "User-name"><%= user.name%></p></td>
+            <td class="Cart-Items"><%= user.email %></td>
+            <td class="Cart-Items"><%= user.phone_number %></td>
+           <td class="Cart-Items">
+            <% role = user.role == "customer" ? "clerk" : "customer" %>
+            <%= form_for(user, url: change_user_role_path(id: user.id,role: role)) do %>
+              <%= select_tag "role",options_for_select(["clerk","customer"],user.role), :onchange => 'this.form.submit();' %>
+            <% end %>
+           </td>
+           <td>
+            <a>
+               <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
                   <%= image_submit_tag("trash.svg") %>
-                <% end %>
-        </a>
-      </div>
-    </li>
-  <% end %>
-</ul>
+               <% end %>
+            </a>
+           </td>
+        </div>
+    <% end %>
+</table>

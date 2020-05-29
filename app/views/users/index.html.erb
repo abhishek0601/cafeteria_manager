@@ -1,5 +1,6 @@
 <main class="UsersPageMain">
   <article>
+    <div class="Users-Table">
       <%= render partial:"users-section", locals: {
         users: User.all.where("role=?","clerk"),
         user_title: "Billing Clerks"
@@ -8,5 +9,6 @@
         users: User.all.where("role=?","customer"),
         user_title: "Customers"
       } %>
+    </div>
   </article>
 </main>

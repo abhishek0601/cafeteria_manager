@@ -1,8 +1,6 @@
 class MenuItemsController < ApplicationController
   before_action :ensure_user_logged_in
-
-  def index
-  end
+  before_action :ensure_owner_logged_in
 
   def create
     menu_item = MenuItem.new(

@@ -1,11 +1,17 @@
 class OrdersController < ApplicationController
   before_action :ensure_user_logged_in
+  before_action :ensure_staff_logged_in, :only => [:status]
+  before_action :ensure_owner_logged_in, :only => [:reports]
 
   def index
   end
 
   def new
     render "cart"
+  end
+
+  def all_orders
+    ensure_staff_logged_in
   end
 
   def update
@@ -17,17 +23,20 @@ class OrdersController < ApplicationController
       order.delivered = false
     else
       order.delivered = true
-      order.delivered_at = DateTime.now
+      order.delivered_at = DateTime.now.in_time_zone("Asia/Kolkata")
     end
     order.save!
     redirect_to menus_path
   end
 
   def status
-    order = Order.find(params[:id])
-    order.delivered = true
-    order.delivered_at = DateTime.now
-    order.save
+    @order = Order.find(params[:id])
+    @order.delivered = true
+    @order.delivered_at = DateTime.now.in_time_zone("Asia/Kolkata")
+    @user = User.find(@order.user_id)
+    if @order.save
+      UserMailer.invoice(@user, @order).deliver
+    end
     redirect_to orders_path
   end
 

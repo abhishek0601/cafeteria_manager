@@ -1,10 +1,10 @@
 <div class="Reports-Form">
   <h2>Reports</h2>
   <%= form_with url:reports_path,method: "get" , local: "true" do %>
-    <h3>Start Date: <%= date_field_tag "start_date" ,class: "Form-input" %>
-    <h3>End Date:  <%= date_field_tag "end_date", class: "Form-input" %>
-    <h3> Customer ID: <%= number_field_tag "customer_id" , nil , { min: 0, class: "Form-input"} %>
-    <%= submit_tag "Search Orders",class: "Form-submit" %>
+    <h3>Start Date: <%= date_field_tag "start_date",nil ,class: "Report-input" %>
+    <h3>End Date:  <%= date_field_tag "end_date",nil, class: "Report-input" %>
+    <h3> Customer ID: <%= number_field_tag "customer_id" , nil , { min: 0, class: "Report-input"} %>
+    <%= submit_tag "Search Orders",class: "Report-submit" %></h3>
   <% end %>
 </div>
 <% if orders %>

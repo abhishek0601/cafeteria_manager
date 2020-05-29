@@ -103,3 +103,13 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.User-Title{
+  background-image: linear-gradient(to right,#c0c0aa,#1cefff);
+  text-align: center;
+  width: 100%;
+}
+
+.Users-Table{
+  margin-left: 50px;
+}

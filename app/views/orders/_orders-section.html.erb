@@ -6,6 +6,12 @@
     <% orders.each do |order| %>
       <li>
         <div class="OrderDetails">
+        <% user = User.find(order.user_id)%>
+        <% if user.role == "customer"%>
+          <h2><%= user.name %></h2>
+        <% else %>
+          <h2>Walk In Customer(Ordered by <%= user.name %>)
+        <% end %>
           <% if order.delivered %>
             <%= link_to "Invoice" , invoice_path(id: order.id),class: "Invoice-link"%>
           <% end %>
@@ -23,7 +29,7 @@
           <div class="OrderDetails-Status">
             <%if @current_user.role == "customer" %>
               <% if order.delivered %>
-                <h3 class="Delivered">Delivered at <%= I18n.l(order.delivered_at, format: :long) %>
+                <h3 class="Delivered">Delivered at <%= order.delivered_at %>
               <% else %>
                 <h3 class="Status">Status : Pending
               <% end %>

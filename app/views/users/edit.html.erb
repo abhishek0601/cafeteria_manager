@@ -1,0 +1,27 @@
+  <section class = "UsersNew">
+    <%= form_for @user ,{:url => user_path , method: :put} do |form| %>
+      <p class="Form-section">
+        <label class="FormInput-label">Name:</label>
+        <%= form.text_field :name, class: "Form-input" %>
+      </p>
+      <p class="Form-section">
+        <label class="FormInput-label">Email:</label>
+        <%= form.email_field :email, class: "Form-input"%>
+      </p>
+      <p class="Form-section">
+        <label class="FormInput-label">Phone Number:</label>
+        <%= form.telephone_field :phone_number, class: "Form-input"%>
+      </p>
+      <p class="Form-section">
+        <label class="FormInput-label">Address:</label>
+        <%= form.text_area :address, class: "Form-input"%>
+      </p>
+      <p class="Form-section">
+        <label class="FormInput-label">Change Password:</label>
+        <%= form.password_field :password, class: "Form-input" %>
+      </p>
+      <p class="Form-section">
+        <%= form.submit "Edit Profile", class: "Form-submit"%>
+      </p>
+    <% end %>
+  </section>
