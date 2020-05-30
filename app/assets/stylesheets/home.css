@@ -257,6 +257,8 @@
 
   .Toggle:checked ~ .Navigation-Display{
     max-height: 700px;
+    z-index: 2;
+    position: absolute;
   }
 
   .Toggle:checked ~ .Navigation-Dropdown{
