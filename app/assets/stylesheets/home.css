@@ -132,13 +132,13 @@
 }
 
 .Home-gif{
-  display:block ;
+  display: block;
   height: 500px;
   width: 500px;
   border-radius: 30%;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px;
+  padding:20px;
 }
 
 .Logo-icon{
@@ -204,7 +204,7 @@
 @media(max-width: 1000px){
   .Navigation-Display{
     width: 100%;
-    background: #0e94a0;
+    background: skyblue;
     overflow: hidden;
     max-height: 0px;
   }

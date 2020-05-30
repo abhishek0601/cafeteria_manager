@@ -32,6 +32,7 @@ body {
   background-color: #c8d8e6;
   background: url("food.jpg") no-repeat center fixed;
   background-size: cover;
+  overflow-x: hidden;
 }
 
 .Menus-name{
@@ -87,7 +88,8 @@ body {
   color: black;
   margin-left: 20px;
   margin-right: 8px;
-  transform: scale(1.5);
+  zoom: 1.5;
+  clear: both;
 }
 
 ul{
