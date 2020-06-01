@@ -20,8 +20,8 @@ class MenuItemsController < ApplicationController
 
   def destroy
     id = params[:id]
-    menu = MenuItem.all.find(id)
-    menu.destroy
+    menu_item = MenuItem.all.find(id)
+    menu_item.destroy
     redirect_to menu_path(session[:current_menu_id])
   end
 

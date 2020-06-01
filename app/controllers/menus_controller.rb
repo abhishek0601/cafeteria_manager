@@ -10,6 +10,7 @@ class MenusController < ApplicationController
   def create
     new_menu = Menu.new(
       name: params[:name],
+      menu_url: params[:menu_url],
     )
     if new_menu.save
       flash[:success] = "Menu added successfully"
@@ -29,8 +30,8 @@ class MenusController < ApplicationController
 
   def destroy
     id = params[:id]
-    menu_item = MenuItem.all.find(id)
-    menu_item.destroy
+    menu = Menu.find(id)
+    menu.destroy
     redirect_to menus_path
   end
 

@@ -3,8 +3,8 @@
     <h1 class="Menus-title">Menus</h1>
     <%= form_with(url: "/menus", method: "post", class: "Menus") do %>
       <p class="Menus-label">Add a Menu:</p>
-        <%= text_field_tag 'name', '' , placeholder: "Add-Menu", class: 'Menus-name'
-        %>
+        <%= text_field_tag 'name', '' , placeholder: "Add-Menu", class: 'Menus-name'%>
+        <%= text_field_tag 'menu_url', '' , placeholder: "Menu-Url", class: 'Menus-name'%>
       <%= button_tag("Add-Menu",type: "submit",class: "Menus-button") %>
     <% end %>
   <% end %>

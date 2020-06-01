@@ -1,7 +1,7 @@
 <ul class="MenuItems">
    <% menu.menu_items.order(:id).all.each do |menu_item| %>
         <li class="Menus-view">
-          <div class="Menus-container">
+          <div class="MenuItems-container">
             <%=image_tag(menu_item.img_url,class: "MenuItem-Img")%>
             <div class="Menus-DivLabel">
               <h3 class="Menus-display"><%= menu_item.name %></h3>

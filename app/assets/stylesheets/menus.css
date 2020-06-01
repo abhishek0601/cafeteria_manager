@@ -42,6 +42,32 @@ body {
   padding: 16px 40px;
 }
 
+.AddItem{
+  display: flex;
+  justify-content:center;
+  align-items: baseline;
+}
+
+.AddItem-Link{
+  background-color: rgb(26, 197, 169);
+  color: white ;
+  text-decoration: none;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  padding: 10px 10px;
+}
+
+.Cart-Link{
+  background-color: rgb(26, 197, 169);
+  color: black ;
+  text-decoration: none;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  float: right;
+  margin-right: 50px;
+  font-weight: bold;
+}
 
 .Menus-select{
   margin-left: 10px;
@@ -74,9 +100,18 @@ body {
   margin-left: 20px;
 }
 
-.Menus-container{
+.MenuItems-container{
   float: left;
   width: 400px;
+  padding: 10px 10px;
+  background-color: rgb(194, 233, 194);
+  margin: 10px;
+  border-radius: 7%;
+}
+
+.Menus-container{
+  float: left;
+  width: 550px;
   padding: 10px 10px;
   background-color: rgb(194, 233, 194);
   margin: 10px;
@@ -122,6 +157,28 @@ ul{
 
 .Menus-container:hover .Edit-Icon{
   visibility: visible;
+}
+
+
+.MenuItems-container:hover .Menu-delete{
+  visibility: visible;
+}
+
+.MenuItems-container:hover .Edit-Icon{
+  visibility: visible;
+}
+
+.Menus-container-align{
+  display: flex;
+  align-items: baseline;
+}
+
+.Menu-Img{
+  width: 90%;
+  height: 350px;
+  padding: 10px;
+  margin-right: 10px;
+  align-content: center;
 }
 
 .Menus-Display{

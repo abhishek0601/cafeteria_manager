@@ -3,24 +3,27 @@
       <% menus.each do |menu| %>
           <li class="Menus-view">
             <div class="Menus-container">
-              <% if @current_user.role != "customer" %>
-                <%= form_with(url: "/menus/#{menu.id}" , method: "put") do %>
-                  <%= check_box_tag("active",
-                      value=nil,
-                      checked=menu.active,
-                      {onclick: "this.form.submit()",
-                      class: "Menus-checkbox"})
-                  %>
-                <% end %>
-              <% end %>
-              <p class="Menus-display"> <%= link_to menu.name,"menus/#{menu.id}"%> </p>
-              <a class="Menu-delete ">
-                <%= form_with(url: "/menus/#{menu.id}" , method: "delete") do %>
-                  <% if @current_user.role != "customer" %>
-                    <%= image_submit_tag("trash.svg") %>
+              <%= image_tag(menu.menu_url,class: "Menu-Img")%>
+              <div class="Menus-container-align">
+                <% if @current_user.role != "customer" %>
+                  <%= form_with(url: "/menus/#{menu.id}" , method: "put") do %>
+                    <%= check_box_tag("active",
+                        value=nil,
+                        checked=menu.active,
+                        {onclick: "this.form.submit()",
+                        class: "Menus-checkbox"})
+                    %>
                   <% end %>
                 <% end %>
-              </a>
+                <p class="Menus-display"> <%= link_to menu.name,"menus/#{menu.id}"%> </p>
+                <a class="Menu-delete ">
+                  <%= form_with(url: "/menus/#{menu.id}" , method: "delete") do %>
+                    <% if @current_user.role != "customer" %>
+                      <%= image_submit_tag("trash.svg") %>
+                    <% end %>
+                  <% end %>
+                </a>
+              </div>
             </div>
           </li>
       <% end %>

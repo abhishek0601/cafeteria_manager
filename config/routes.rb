@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   put "/order_items/update/:id" => "order_items#update", as: :update_order_items
   get "/all_orders" => "orders#all_orders", as: :all_orders
   patch "/users/:id/change_role" => "users#change_role", as: :change_user_role
+  get "/menus/:id/add_item" => "menu_items#add_item", as: :add_item
 end

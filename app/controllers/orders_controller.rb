@@ -25,7 +25,11 @@ class OrdersController < ApplicationController
       order.delivered = true
       order.delivered_at = DateTime.now.in_time_zone("Asia/Kolkata")
     end
-    order.save!
+    if order.save!
+      if @current_user.role == "customer"
+        flash[:notice] = "Successfully Ordered and Invoice would be sent through E-mail"
+      end
+    end
     redirect_to menus_path
   end
 

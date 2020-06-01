@@ -1,28 +1,12 @@
+<h3 class="NewUsers-title">Menu Items for <%=menu.name%></h3>
 <% if @current_user.role == "owner" %>
-  <section class = "UsersNew">
-    <h3 class="MenusNew-Label">Add a Menu Item</h3>
-      <%= form_with url: menu_items_path,local:true  do |form| %>
-        <p class="Form-section">
-          <label class="FormInput-label">Item Name:</label>
-          <%= form.text_field :name, class: "Form-input",placeholder: "Enter the menu item",autofocus: "autofocus" %>
-        </p>
-        <p class="Form-section">
-          <label class="FormInput-label">Price:</label>
-          <%= form.number_field :price, class: "Form-input"%>
-        </p>
-        <p class="Form-section">
-          <label class="FormInput-label">Image Url:</label>
-          <%= form.text_field :img_url, class: "Form-input",placeholder: "Image Url"%>
-        </p>
-        <p class="Form-section">
-          <label class="FormInput-label">Descrption:</label>
-          <%= form.text_area :description, class: "Form-input"%>
-        </p>
-        <p class="Form-section">
-          <%= form.submit "Add-Item!", class: "Form-submit"%>
-        </p>
-      <% end %>
-  </section>
+  <div class="AddItem">
+    <h2>Add Menu Item :</h2>
+    <p><%= link_to "Add-Item" , add_item_path(id: menu.id),class: "AddItem-Link" %></p>
+  </div>
 <% end %>
-<h3 class="NewUsers-title">Menu Items for <%=menu.name%> </h3>
+<%= link_to cart_path,class: "Cart-Link" do %>
+  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  Go to Cart
+<% end %>
 <%= render partial: "show_menu_items",locals: {menu:menu}%>

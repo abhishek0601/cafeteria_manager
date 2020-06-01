@@ -183,6 +183,9 @@
     <% if flash[:success] %>
       <p class="Flash-success"> <%= flash[:success] %> </p>
     <% end %>
+    <% if flash[:notice] %>
+      <p class="Flash-notice"> <%= flash[:notice] %> </p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

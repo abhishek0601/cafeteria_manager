@@ -39,6 +39,16 @@
   border: 2px solid green;
 }
 
+.Flash-notice{
+  color: rgb(11, 59, 190);
+  margin-bottom: 20px;
+  font-size: 16px;
+  height: 40px;
+  text-align: center;
+  background-color: skyblue;
+  border: 2px solid blue;
+}
+
 .Navigation {
   background-image: linear-gradient(to right,#005aa7,#fffde4);
   height: 70px;
@@ -49,6 +59,8 @@
   list-style: none;
   background-image: linear-gradient(to right,#005aa7,#fffde4);
   width: 100%;
+  display: absolute;
+  z-index: 2;
 }
 
 .Navigation-Display li{
@@ -65,12 +77,12 @@
   padding: 20px;
   font-size: 25px;
   text-decoration: none;
+  color: #005aa7;
 }
 
 .Navigation a:hover {
   background: skyblue;
   color: rgb(15, 39, 37);
-  transition: 0.5s;
 }
 
 .Navigation a.active {
@@ -83,6 +95,7 @@
   top: 70px;
   right: 0px;
   display: none;
+  z-index: 2;
 }
 
 .Navigation-Display li:hover .Navigation-Dropdown{
@@ -99,7 +112,7 @@
 
 .Navigation-Dropdown li a{
   padding: 20px;
-  background: white;
+  background-image: linear-gradient(to right,#a1ffce,#faffd1);
   width: 250px;
 }
 
@@ -201,10 +214,10 @@
   display: none;
 }
 
-@media(max-width: 1000px){
+@media(max-width: 1070px){
   .Navigation-Display{
     width: 100%;
-    background: skyblue;
+    background-image: linear-gradient(to right,#a1ffce,#faffd1);
     overflow: hidden;
     max-height: 0px;
   }
@@ -235,7 +248,7 @@
   }
 
   .Navigation-Dropdown li a{
-    background: #43bec9;
+    background:inherit;
     width: 100%;
   }
 
