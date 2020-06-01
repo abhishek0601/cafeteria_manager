@@ -15,7 +15,12 @@
                     %>
                   <% end %>
                 <% end %>
-                <p class="Menus-display"> <%= link_to menu.name,"menus/#{menu.id}"%> </p>
+                <p class="Menus-display">
+                  <%= link_to "menus/#{menu.id}",class: "Menu-Link" do %>
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    <%= menu.name %>
+                  <% end %>
+                </p>
                 <a class="Menu-delete ">
                   <%= form_with(url: "/menus/#{menu.id}" , method: "delete") do %>
                     <% if @current_user.role != "customer" %>

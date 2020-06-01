@@ -9,6 +9,10 @@
           <%= form.number_field :price, class: "Form-input"%>
         </p>
         <p class="Form-section">
+          <label>Category:</label>
+          <%= form.select :category,options_for_select(["Veg","Non-veg"],@menu_item.category )%>
+        </p>
+        <p class="Form-section">
           <label class="FormInput-label">Image Url:</label>
           <%= form.text_field :img_url, class: "Form-input",placeholder: "Image Url"%>
         </p>

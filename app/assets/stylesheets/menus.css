@@ -171,6 +171,7 @@ ul{
 .Menus-container-align{
   display: flex;
   align-items: baseline;
+  justify-content: center;
 }
 
 .Menu-Img{
@@ -211,10 +212,8 @@ ul{
 }
 
 .MenuItem-Img{
-  width: 90%;
+  width: 100%;
   height: 200px;
-  padding: 10px;
-  margin-right: 10px;
   align-content: center;
 }
 
@@ -226,9 +225,37 @@ ul{
   margin: 5px;
 }
 
+.MenuItem-image{
+  position: relative;
+}
+
+.MenuItem-description{
+  position: absolute;
+  bottom: 0;
+  height:fit-content;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background: rgba(0,0,0,0.7);
+}
+
+.MenuItem-image:hover .MenuItem-description{
+  opacity: 1;
+}
+
+.MenuItem-des{
+  color: white;
+}
+
 .Quantity{
   margin: 5px 5px;
   color: #0563af;
+}
+
+.MenuItem-category{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 .MenusNew-Label{
@@ -242,4 +269,18 @@ ul{
 
 .Quantity-Button{
   margin-left: 10px;
+}
+
+.Menus-DivLabel{
+  display: flex;
+  align-items: baseline;
+}
+
+.Menu-Link{
+  background-color: rgb(115, 212, 236);
+  color: black ;
+  text-decoration: none;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  padding: 10px 10px;
 }

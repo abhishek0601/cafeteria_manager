@@ -7,6 +7,7 @@ class MenuItemsController < ApplicationController
       name: params[:name],
       description: params[:description],
       price: params[:price],
+      category: params[:category],
       img_url: params[:img_url],
       menu_id: session[:current_menu_id],
     )
@@ -35,7 +36,7 @@ class MenuItemsController < ApplicationController
 
   def update
     @menu_item = MenuItem.find(params[:id])
-    @menu_item.update(name: params[:menu_item][:name], price: params[:menu_item][:price], description: params[:menu_item][:description])
-    redirect_to menus_path
+    @menu_item.update(name: params[:menu_item][:name], price: params[:menu_item][:price], category: params[:menu_item][:category], description: params[:menu_item][:description])
+    redirect_to menu_path(session[:current_menu_id])
   end
 end

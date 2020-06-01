@@ -2,13 +2,22 @@
    <% menu.menu_items.order(:id).all.each do |menu_item| %>
         <li class="Menus-view">
           <div class="MenuItems-container">
-            <%=image_tag(menu_item.img_url,class: "MenuItem-Img")%>
+            <div class="MenuItem-image">
+              <%=image_tag(menu_item.img_url,class: "MenuItem-Img")%>
+              <div class="MenuItem-description">
+                <p class="MenuItem-des"><%= menu_item.description %></p>
+              </div>
+            </div>
             <div class="Menus-DivLabel">
+              <% if menu_item.category == "Veg" %>
+                <%= image_tag "veg.jpg" ,class: "MenuItem-category" %>
+              <% else %>
+                <%= image_tag "non-veg.png" ,class: "MenuItem-category" %>
+              <% end %>
               <h3 class="Menus-display"><%= menu_item.name %></h3>
-              <p><%= menu_item.description %>
             </div>
             <div class="Menus-DivItems">
-              <h3>Price: Rs.<%=menu_item.price%></h3>
+              <h3>Rs.<%=menu_item.price%></h3>
               <% if @current_user.role == "owner" %>
                 <a class="Menu-delete ">
                   <%= form_with(url: "/menu_items/#{menu_item.id}" , method: "delete") do %>
