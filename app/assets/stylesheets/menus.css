@@ -1,5 +1,5 @@
 .Menus-title{
-  margin-left: 20px;
+  justify-content: center;
 }
 
 .Menus{
@@ -24,15 +24,6 @@
   padding: 15px 25px;
   margin-top: auto;
   margin-left:20px ;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #c8d8e6;
-  background: url("food.jpg") no-repeat center fixed;
-  background-size: cover;
-  overflow-x: hidden;
 }
 
 .Menus-name{

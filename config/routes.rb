@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post "/signin" => "sessions#create", as: :sessions
   delete "/signout" => "sessions#destroy", as: :destroy_session
   get "/home" => "sessions#home", as: :sessions_home
+  get "/about" => "home#about", as: :about
   post "/order_items" => "order_items#create", as: :new_order_item
   get "/cart" => "orders#new", as: :cart
   put "/status" => "orders#status", as: :order_status

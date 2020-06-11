@@ -12,180 +12,240 @@
   </head>
 
   <body>
-    <% if @current_user %>
-          <header class="Navigation">
-                <%= image_tag("logo.jpg",class: "Logo-icon") %>
-                <%= image_tag("name.png",class: "Logo-name" )%>
-              <div class="Navigation-right">
-                <label for="Toggle">
-                  <i class="fa fa-bars Menu-Toggle" id='Menu-Toggle'></i>
-                </label>
-                <input type="checkbox" class="Toggle" id="Toggle" >
-                <ul class="Navigation-Display" id='Nav-ul'>
-                  <% if @current_user.role == "owner" %>
-                      <li>
-                        <%= link_to sessions_home_path do%>
-                          <i class="fa fa-home Icons-Align"></i>
-                          Home
-                        <%end%>
-                      </li>
-                      <li>
-                        <%= link_to cart_path do%>
-                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                          Walk In
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to menus_path do%>
-                          <i class="fa fa-cutlery" aria-hidden="true"></i>
-                          Menus
-                        <% end %>
-                      </li>
-                      <li>
+    <div class="main-content">
+      <% if @current_user %>
+            <header class="Navigation">
+                  <%= image_tag("logo.jpg",class: "Logo-icon") %>
+                  <%= image_tag("name.png",class: "Logo-name" )%>
+                <div class="Navigation-right">
+                  <label for="Toggle">
+                    <i class="fa fa-bars Menu-Toggle" id='Menu-Toggle'></i>
+                  </label>
+                  <input type="checkbox" class="Toggle" id="Toggle" >
+                  <ul class="Navigation-Display" id='Nav-ul'>
+                    <% if @current_user.role == "owner" %>
+                        <li>
+                          <%= link_to sessions_home_path do%>
+                            <i class="fa fa-home Icons-Align"></i>
+                            Home
+                          <%end%>
+                        </li>
+                        <li>
+                          <%= link_to cart_path do%>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Walk In
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to menus_path do%>
+                            <i class="fa fa-cutlery" aria-hidden="true"></i>
+                            Menus
+                          <% end %>
+                        </li>
+                        <li>
+                            <a>
+                              <i class="fa fa-user"></i>
+                              <%=@current_user.name%>
+                              <i class="fa fa-chevron-down"></i>
+                            </a>
+                            <ul class="Navigation-Dropdown" id='Nav-ul'>
+                              <li><%= link_to orders_path do %>
+                                    <i class="fa fa-truck" aria-hidden="true"></i>
+                                    Pending Orders
+                                  <% end %>
+                              </li>
+                              <li><%= link_to all_orders_path do %>
+                                    <i class="fa fa-list-alt"></i>
+                                    All Orders
+                                  <% end %>
+                              </li>
+                              <li>
+                                <%= link_to users_path do%>
+                                  <i class="fa fa-users" aria-hidden="true"></i>
+                                  Users
+                                <% end %>
+                              </li>
+                              <li>
+                                <%= link_to reports_path do %>
+                                  <i class="fa fa-table" aria-hidden="true"></i>
+                                  Reports
+                                <% end %>
+                              </li>
+                              <li>
+                                  <%= link_to destroy_session_path,method: "delete" do %>
+                                    <i class="fa fa-sign-out"></i>
+                                    Sign-Out
+                                  <% end %>
+                              </li>
+                            </ul>
+                        </li>
+                    <% elsif @current_user.role == "clerk" %>
+                        <li>
+                          <%= link_to sessions_home_path do%>
+                            <i class="fa fa-home Icons-Align"></i>
+                            Home
+                          <%end%>
+                        </li>
+                        <li>
+                          <%= link_to cart_path do%>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Walk In
+                          <% end %>
+                        </li>
+                        <li><%= link_to  menus_path do %>
+                              <i class="fa fa-cutlery"></i>
+                              Menus
+                            <% end %>
+                        </li>
+                        <li>
                           <a>
                             <i class="fa fa-user"></i>
                             <%=@current_user.name%>
                             <i class="fa fa-chevron-down"></i>
                           </a>
-                          <ul class="Navigation-Dropdown" id='Nav-ul'>
-                            <li><%= link_to orders_path do %>
-                                  <i class="fa fa-truck" aria-hidden="true"></i>
-                                  Pending Orders
-                                <% end %>
-                            </li>
-                            <li><%= link_to all_orders_path do %>
-                                  <i class="fa fa-list-alt"></i>
-                                  All Orders
-                                <% end %>
-                            </li>
-                            <li>
-                              <%= link_to users_path do%>
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                Users
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to reports_path do %>
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                Reports
-                              <% end %>
-                            </li>
-                            <li>
-                                <%= link_to destroy_session_path,method: "delete" do %>
-                                  <i class="fa fa-sign-out"></i>
-                                  Sign-Out
-                                <% end %>
-                            </li>
-                          </ul>
-                      </li>
-                  <% elsif @current_user.role == "clerk" %>
-                      <li>
-                        <%= link_to sessions_home_path do%>
-                          <i class="fa fa-home Icons-Align"></i>
-                          Home
-                        <%end%>
-                      </li>
-                      <li>
-                        <%= link_to cart_path do%>
-                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                          Walk In
-                        <% end %>
-                      </li>
-                      <li><%= link_to  menus_path do %>
-                            <i class="fa fa-cutlery"></i>
-                            Menus
-                          <% end %>
-                      </li>
-                      <li>
-                        <a>
-                          <i class="fa fa-user"></i>
-                          <%=@current_user.name%>
-                          <i class="fa fa-chevron-down"></i>
-                        </a>
-                        <ul class="Navigation-Dropdown">
-                            <li><%= link_to all_orders_path do %>
-                                  <i class="fa fa-list-alt"></i>
-                                  All Orders
-                                <% end %>
-                            </li>
-                            <li><%= link_to orders_path do%>
-                                  <i class="fa fa-truck" aria-hidden="true"></i>
-                                  Pending Orders
-                                <% end %>
-                            </li>
-                            <li>
-                              <%= link_to edit_user_path(@current_user.id) do%>
-                                <i class="fa fa-edit"></i>
-                                Edit Profile
-                              <% end %>
-                            </li>
-                            <li>
-                                <%= link_to destroy_session_path,method: "delete" do %>
-                                  <i class="fa fa-sign-out"></i>
-                                  Sign-Out
-                                <% end %>
-                            </li>
-                        </ul>
-                      </li>
-                  <% else %>
-                      <li>
-                        <%= link_to sessions_home_path do%>
-                          <i class="fa fa-home Icons-Align"></i>
-                          Home
-                        <%end%>
-                      </li>
-                      <li>
-                          <%= link_to  menus_path do %>
-                            <i class="fa fa-cutlery"></i>
-                            Menus
-                          <% end %>
-                      </li>
-                      <li>
-                        <%= link_to cart_path do%>
-                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                          Cart
-                        <% end %>
-                      </li>
-                      <li>
-                        <a>
-                          <i class="fa fa-user"></i>
-                          <%=@current_user.name%>
-                          <i class="fa fa-chevron-down"></i>
-                        </a>
                           <ul class="Navigation-Dropdown">
-                            <li>
-                              <%= link_to orders_path do %>
-                                <i class="fa fa-list-alt"></i>
-                                My Orders
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to edit_user_path(@current_user.id) do%>
-                                <i class="fa fa-edit"></i>
-                                Edit Profile
-                              <% end %>
-                            </li>
-                            <li>
-                                <%= link_to destroy_session_path,method: "delete" do %>
-                                  <i class="fa fa-sign-out"></i>
-                                  Sign-Out
+                              <li><%= link_to all_orders_path do %>
+                                    <i class="fa fa-list-alt"></i>
+                                    All Orders
+                                  <% end %>
+                              </li>
+                              <li><%= link_to orders_path do%>
+                                    <i class="fa fa-truck" aria-hidden="true"></i>
+                                    Pending Orders
+                                  <% end %>
+                              </li>
+                              <li>
+                                <%= link_to edit_user_path(@current_user.id) do%>
+                                  <i class="fa fa-edit"></i>
+                                  Edit Profile
                                 <% end %>
-                            </li>
+                              </li>
+                              <li>
+                                  <%= link_to destroy_session_path,method: "delete" do %>
+                                    <i class="fa fa-sign-out"></i>
+                                    Sign-Out
+                                  <% end %>
+                              </li>
                           </ul>
-                  <% end %>
-                </ul>
-              </div>
-          </header>
-    <% end %>
-    <% if flash[:error] %>
-      <p class="Flash-error"> <%= flash[:error] %> </p>
-    <% end %>
-    <% if flash[:success] %>
-      <p class="Flash-success"> <%= flash[:success] %> </p>
-    <% end %>
-    <% if flash[:notice] %>
-      <p class="Flash-notice"> <%= flash[:notice] %> </p>
-    <% end %>
-    <%= yield %>
+                        </li>
+                    <% else %>
+                        <li>
+                          <%= link_to sessions_home_path do%>
+                            <i class="fa fa-home Icons-Align"></i>
+                            Home
+                          <%end%>
+                        </li>
+                        <li>
+                            <%= link_to  menus_path do %>
+                              <i class="fa fa-cutlery"></i>
+                              Menus
+                            <% end %>
+                        </li>
+                        <li>
+                          <%= link_to cart_path do%>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Cart
+                          <% end %>
+                        </li>
+                        <li>
+                          <a>
+                            <i class="fa fa-user"></i>
+                            <%=@current_user.name%>
+                            <i class="fa fa-chevron-down"></i>
+                          </a>
+                            <ul class="Navigation-Dropdown">
+                              <li>
+                                <%= link_to orders_path do %>
+                                  <i class="fa fa-list-alt"></i>
+                                  My Orders
+                                <% end %>
+                              </li>
+                              <li>
+                                <%= link_to edit_user_path(@current_user.id) do%>
+                                  <i class="fa fa-edit"></i>
+                                  Edit Profile
+                                <% end %>
+                              </li>
+                              <li>
+                                  <%= link_to destroy_session_path,method: "delete" do %>
+                                    <i class="fa fa-sign-out"></i>
+                                    Sign-Out
+                                  <% end %>
+                              </li>
+                            </ul>
+                    <% end %>
+                  </ul>
+                </div>
+            </header>
+      <% end %>
+      <% if flash[:error] %>
+        <p class="Flash-error"> <%= flash[:error] %> </p>
+      <% end %>
+      <% if flash[:success] %>
+        <p class="Flash-success"> <%= flash[:success] %> </p>
+      <% end %>
+      <% if flash[:notice] %>
+        <p class="Flash-notice"> <%= flash[:notice] %> </p>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>Food<span>anza</span></h3>
+
+				<p class="footer-company-name">Foodanza © 2020</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>ECIL Cross Roads,Near Radhika Theatre</span> Kapra, A. S. Rao Nagar, Hyderabad, Telangana 500062</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+91 9652153610</p>
+				</div>
+
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:support@company.com">foodanzacafe@gmail.com</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+        <div>
+          <%= link_to about_path do %>
+            <i class="fa fa-info-circle"></i>
+            About
+          <% end %>
+        </div>
+        <div>
+          <%= link_to about_path do %>
+            <i class="fa fa-legal"></i>
+            Terms and Conditions
+          <% end %>
+				</div>
+
+				<div class="footer-icons">
+
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+
+		</footer>
+
   </body>
+
 </html>
