@@ -9,11 +9,8 @@ class OrderItemsController < ApplicationController
       menu_item_id: params[:menu_item_id],
       quantity: quantity,
     )
-    if params[:success] == false
-      redirect_to menu_path(id: params[:menu_id])
-    else
-      redirect_to menu_path(id: params[:menu_id])
-    end
+    flash[:success] = "#{params[:menu_item_name]} has been added to cart successfully"
+    redirect_to menu_path(id: params[:menu_id])
   end
 
   def destroy

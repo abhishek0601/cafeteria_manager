@@ -214,6 +214,10 @@
   display: none;
 }
 
+.About{
+  background-color: rgb(167, 219, 221);
+}
+
 @media(max-width: 1070px){
   .Navigation-Display{
     width: 100%;

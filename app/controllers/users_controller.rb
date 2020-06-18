@@ -48,12 +48,16 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update(name: params[:user][:name], email: params[:user][:email], phone_number: params[:user][:phone_number], password: params[:user][:password])
+    if @user.update(name: params[:user][:name], email: params[:user][:email], phone_number: params[:user][:phone_number], password: params[:user][:password])
+      flash[:success] = "Profile has been updated"
+    else
+      flash[:error] = "Could not update profile"
+    end
     redirect_to sessions_home_path
   end
 end
