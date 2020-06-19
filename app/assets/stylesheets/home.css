@@ -61,6 +61,7 @@
   width: 100%;
   display: absolute;
   z-index: 2;
+  margin: 0 auto;
 }
 
 .Navigation-Display li{
@@ -74,7 +75,7 @@
 
 .Navigation a{
   display: block;
-  padding: 20px;
+  padding: 17px;
   font-size: 25px;
   text-decoration: none;
   color: #005aa7;

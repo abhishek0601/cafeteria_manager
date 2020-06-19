@@ -105,6 +105,10 @@
   margin-left: 20px;
 }
 
+.AddMenu-Link:hover{
+  background-color: skyblue;
+}
+
 .EmptyCart-Link{
   background-color: rgb(26, 197, 169);
   color: white ;
@@ -112,6 +116,10 @@
   font-family: sans-serif;
   text-transform: uppercase;
   padding: 10px 10px;
+}
+
+.EmptyCart-Link:hover{
+  background-color: rgb(25, 134, 80);
 }
 
 .Invoice-link{
@@ -203,4 +211,8 @@
   margin: 0 auto;
   padding: 10px;
   width: 150px;
+}
+
+.Report-submit:hover{
+  background-color: slateblue;
 }

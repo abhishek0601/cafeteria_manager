@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
     @user = User.find(@order.user_id)
     if @order.save
       UserMailer.invoice(@user, @order).deliver
+      flash[:success] = "Order has been delivered successfully"
     end
     redirect_to orders_path
   end
