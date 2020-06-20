@@ -35,17 +35,17 @@
   width: fit-content;
 }
 
-.Cart-Table{
+.Cart-Table,.Users-Table{
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 80%;
 }
 
-.Cart-Title{
+.Cart-Title,.Report-Title,.Invoice-Title,.Users-Title{
   background-color: white;
 }
 
-.Cart-TitleHead{
+.Cart-TitleHead,.Report-TitleHead,.Invoice-TitleHead,.Users-TitleHead{
   padding: 8px;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -54,7 +54,7 @@
   color: black;
 }
 
-.Cart-Items{
+.Cart-Items,.Report-Items,.Invoice-Items,.Users-Items{
   border: 1px solid #ddd;
   padding: 8px;
   height: 35px;

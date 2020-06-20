@@ -15,22 +15,22 @@
   </div>
   <h3>Delivered On: <%=order.delivered_at.strftime('%d %b %Y') %></h3>
   <table class="Invoice-Table">
-        <tr class = "Cart-Title">
-          <th class="Cart-TitleHead">SNo.</th>
-          <th class="Cart-TitleHead">Name</th>
-          <th class="Cart-TitleHead">Quantity</th>
-          <th class="Cart-TitleHead">Unit Price</th>
-          <th class="Cart-TitleHead">Price</th>
+        <tr class = "Invoice-Title">
+          <th class="Invoice-TitleHead">SNo.</th>
+          <th class="Invoice-TitleHead">Name</th>
+          <th class="Invoice-TitleHead">Quantity</th>
+          <th class="Invoice-TitleHead">Unit Price</th>
+          <th class="Invoice-TitleHead">Price</th>
         </tr>
         <% serial_no = 1 %>
         <% order.order_items.each do|order_item| %>
           <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
-            <tr class="Cart-Title">
-              <td class="Cart-Items"><%= serial_no %></td>
-              <td class="Cart-Items"><%= order_item.menu_item_name %></td>
-              <td class="Cart-Items"><%= order_item.quantity %></td>
-              <td class="Cart-Items"><%= order_item.menu_item_price%></td>
-              <td class="Cart-Items"><%= order_item.menu_item_price*order_item.quantity %></td>
+            <tr class="Invoice-Title">
+              <td class="Invoice-Items"><%= serial_no %></td>
+              <td class="Invoice-Items"><%= order_item.menu_item_name %></td>
+              <td class="Invoice-Items"><%= order_item.quantity %></td>
+              <td class="Invoice-Items"><%= order_item.menu_item_price%></td>
+              <td class="Invoice-Items"><%= order_item.menu_item_price*order_item.quantity %></td>
             </tr>
             <% serial_no = serial_no + 1%>
         <% end %>

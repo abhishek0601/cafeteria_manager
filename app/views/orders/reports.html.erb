@@ -14,20 +14,20 @@
   </div>
   <div>
     <table class="Reports-Table">
-          <tr class = "Cart-Title">
-            <th class="Cart-TitleHead">Customer Id</th>
-            <th class="Cart-TitleHead">Customer Name</th>
-            <th class="Cart-TitleHead">Delivered Date</th>
-            <th class="Cart-TitleHead">Total Price</th>
-            <th class="Cart-TitleHead">Invoice</th>
+          <tr class = "Report-Title">
+            <th class="Report-TitleHead">Customer Id</th>
+            <th class="Report-TitleHead">Customer Name</th>
+            <th class="Report-TitleHead">Delivered Date</th>
+            <th class="Report-TitleHead">Total Price</th>
+            <th class="Report-TitleHead">Invoice</th>
           </tr>
           <% orders.each do|order| %>
-              <tr class="Cart-Title">
-                <td class="Cart-Items"><%= order.user_id %></td>
-                <td class="Cart-Items"><%= User.find(order.user_id).name %></td>
-                <td class="Cart-Items"><%= order.delivered_at.strftime('%d %b %Y') %></td>
-                <td class="Cart-Items"><%= order.total_price%></td>
-                <td class="Cart-Items"> <%= link_to "Invoice" , invoice_path(id: order.id)%></td>
+              <tr class="Report-Title">
+                <td class="Report-Items"><%= order.user_id %></td>
+                <td class="Report-Items"><%= User.find(order.user_id).name %></td>
+                <td class="Report-Items"><%= order.delivered_at.strftime('%d %b %Y') %></td>
+                <td class="Report-Items"><%= order.total_price%></td>
+                <td class="Report-Items"> <%= link_to "Invoice" , invoice_path(id: order.id)%></td>
               </tr>
           <% end %>
     </table>

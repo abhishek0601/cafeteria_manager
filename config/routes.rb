@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   delete "/signout" => "sessions#destroy", as: :destroy_session
   get "/home" => "sessions#home", as: :sessions_home
   get "/about" => "home#about", as: :about
+  get "/terms-and-conditions" => "home#terms_and_conditions", as: :terms
+  get "privacy-policy" => "home#privacy_policy", as: :privacy_policy
   post "/order_items" => "order_items#create", as: :new_order_item
   get "/cart" => "orders#new", as: :cart
   put "/status" => "orders#status", as: :order_status

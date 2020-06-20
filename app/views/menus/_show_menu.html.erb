@@ -1,8 +1,7 @@
-  <h2>Menus-List</h2>
     <ul>
         <% menus.each do |menu| %>
             <li class="Menus-view">
-              <div class="Menus-container">
+              <div class="Menus-container" id= "<%= menu.id %>" >
                 <%= image_tag(menu.menu_url,class: "Menu-Img")%>
                 <div class="Menus-container-align">
                   <% if @current_user.role != "customer" %>

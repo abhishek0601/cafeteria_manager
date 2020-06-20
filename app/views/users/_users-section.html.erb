@@ -1,20 +1,20 @@
 <h2 class="User-Title"><%= user_title %></h2>
- <table class="Cart-Table">
-   <tr class = "Cart-Title">
-     <th class="Cart-TitleHead">User Id</th>
-     <th class="Cart-TitleHead">Name</th>
-     <th class="Cart-TitleHead">Email</th>
-     <th class="Cart-TitleHead">Phone Number</th>
-     <th class="Cart-TitleHead">Role</th>
+ <table class="Users-Table">
+   <tr class = "Users-Title">
+     <th class="Users-TitleHead">User Id</th>
+     <th class="Users-TitleHead">Name</th>
+     <th class="Users-TitleHead">Email</th>
+     <th class="Users-TitleHead">Phone Number</th>
+     <th class="Users-TitleHead">Role</th>
    </tr>
     <% users.each do |user| %>
         <div class="User-container">
-         <tr class="Cart-Title">
-            <td class="Cart-Items"><%= user.id %>
-            <td class="Cart-Items"><p class = "User-name"><%= user.name%></p></td>
-            <td class="Cart-Items"><%= user.email %></td>
-            <td class="Cart-Items"><%= user.phone_number %></td>
-           <td class="Cart-Items">
+         <tr class="Users-Title">
+            <td class="Users-Items"><%= user.id %>
+            <td class="Users-Items"><p class = "User-name"><%= user.name%></p></td>
+            <td class="Users-Items"><%= user.email %></td>
+            <td class="Users-Items"><%= user.phone_number %></td>
+           <td class="Users-Items">
             <% role = user.role == "customer" ? "clerk" : "customer" %>
             <%= form_for(user, url: change_user_role_path(id: user.id,role: role)) do %>
               <%= select_tag "role",options_for_select(["clerk","customer"],user.role), :onchange => 'this.form.submit();' %>

@@ -1,9 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :ensure_user_logged_in, :except => [:home]
 
-  def new
-  end
-
   def home
     render "home"
   end

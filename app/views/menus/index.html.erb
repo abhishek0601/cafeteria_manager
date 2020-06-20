@@ -1,16 +1,26 @@
- <div class="Menus-Align">
+<h1 class="Menus-title">Menus</h1>
+<div class="Menus-Add">
   <% if @current_user.role == "owner" %>
-    <h1 class="Menus-title">Menus</h1>
-    <%= form_with(url: "/menus", method: "post", class: "Menus") do %>
-      <p class="Menus-label">Add a Menu:</p>
-        <%= text_field_tag 'name', '' , placeholder: "Add-Menu", class: 'Menus-name'%>
-        <%= text_field_tag 'menu_url', '' , placeholder: "Menu-Url", class: 'Menus-name'%>
-      <%= button_tag("Add-Menu",type: "submit",class: "Menus-button") %>
+      <%= form_with(url: "/menus", method: "post", class: "Menus") do %>
+        <p class="Menus-label">Add a Menu:</p>
+          <%= text_field_tag 'name', '' , placeholder: "Add-Menu", class: 'Menus-name'%>
+          <%= text_field_tag 'menu_url', '' , placeholder: "Menu-Url", class: 'Menus-name'%>
+        <%= button_tag("Add-Menu",type: "submit",class: "Menus-button") %>
+      <% end %>
+  <% end %>
+</div>
+<div class="Menus-Align">
+  <div class="Menus-Links">
+    <b>Menu</b>
+      <% Menu.all.where("active=?",true).each do |menu| %>
+       <a href="#<%=menu.id%>" class="Menu-names"><%= menu.name %></a>
+      <% end %>
+  </div>
+  <div class = "Menus-List">
+    <% if @current_user.role == "customer" %>
+      <%= render partial: "show_menu",locals: {menus: Menu.all.where("active=?",true)} %>
+    <% else %>
+      <%= render partial: "show_menu",locals: {menus: Menu.all} %>
     <% end %>
-  <% end %>
-  <% if @current_user.role == "customer" %>
-    <%= render partial: "show_menu",locals: {menus: Menu.all.where("active=?",true)} %>
-  <% else %>
-    <%= render partial: "show_menu",locals: {menus: Menu.all} %>
-  <% end %>
+  </div>
 </div>

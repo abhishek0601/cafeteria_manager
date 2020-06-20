@@ -105,6 +105,7 @@
 
 .Navigation-Dropdown li{
   width: 100%;
+  list-style: none;
 }
 
 .Navigation-Dropdown li:hover ul {
@@ -215,9 +216,10 @@
   display: none;
 }
 
-.About{
+.About,.Terms,.privacy-policy{
   background-color: rgb(167, 219, 221);
 }
+
 
 @media(max-width: 1070px){
   .Navigation-Display{
