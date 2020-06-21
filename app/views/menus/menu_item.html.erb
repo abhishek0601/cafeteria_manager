@@ -9,6 +9,10 @@
   <i class="fa fa-shopping-cart" aria-hidden="true"></i>
   Go to Cart
 <% end %>
+<%= link_to menus_path,class: "ToMenus-Link" do %>
+  <i class="fa fa-cutlery" aria-hidden="true"></i>
+  Go to Menus
+<% end %>
 <section>
   <%= render partial: "show_menu_items",locals: {menu:menu}%>
 </section>

@@ -53,6 +53,9 @@
   background-image: linear-gradient(to right,#005aa7,#fffde4);
   height: 70px;
   width: 100%;
+  top: 0;
+  z-index: 2;
+  position: sticky;
 }
 
 .Navigation-Display{
@@ -168,6 +171,18 @@
   padding-right: 30px;
 }
 
+.Home-link{
+  background-color: skyblue;
+  border: 1px solid black;
+  color: black;
+  padding: 5px 5px;
+  text-decoration: none;
+}
+
+.Center-Home{
+  text-align: center;
+}
+
 .Home-svg{
   width: 50px;
   height: auto;
@@ -240,7 +255,8 @@
   }
 
   .Navigation{
-    position: relative;
+    position: sticky;
+    top: 0;
   }
 
   .Navigation-right{

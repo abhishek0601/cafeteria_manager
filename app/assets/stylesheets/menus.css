@@ -121,6 +121,9 @@
   background-color: lightgreen;
   height: fit-content;
   margin-top: 30px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
 }
 
 .Menu-names{
@@ -315,6 +318,17 @@
   border: 1px solid black;
 }
 
-.Menu-Link:hover{
+.Menu-Link:hover,.ToMenus-Link:hover{
   background-color: rgb(64, 218, 123) ;
+}
+
+.ToMenus-Link{
+  float: left;
+  background-color:rgb(115, 212, 236);
+  color: black ;
+  text-decoration: none;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  border: 1px solid black;
 }
