@@ -54,6 +54,12 @@
                                     Pending Orders
                                   <% end %>
                               </li>
+                              <li>
+                                <%= link_to edit_user_path(@current_user.id) do%>
+                                  <i class="fa fa-edit"></i>
+                                  Edit Profile
+                                <% end %>
+                              </li>
                               <li><%= link_to all_orders_path do %>
                                     <i class="fa fa-list-alt"></i>
                                     All Orders
