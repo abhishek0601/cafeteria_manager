@@ -7,25 +7,31 @@ class UsersController < ApplicationController
 
   def create
     role = "customer"
-    user = User.new(
-      name: params[:name].capitalize,
-      email: params[:email],
-      role: role,
-      phone_number: params[:phone_number],
-      address: params[:address],
-      password: params[:password],
-    )
-    if user.save
-      if session[:current_user_id]
-        redirect_to users_path
-      else
-        session[:current_user_id] = user.id
-        flash[:success] = "Signed-up Successfully!!"
-        redirect_to sessions_home_path
-      end
-    else
-      flash[:error] = user.errors.full_messages.join(", ")
+    user = User.find_by_email(params[:email])
+    if user
+      flash[:error] = "User email already exists."
       redirect_to new_user_path
+    else
+      new_user = User.new(
+        name: params[:name].capitalize,
+        email: params[:email],
+        role: role,
+        phone_number: params[:phone_number],
+        address: params[:address],
+        password: params[:password],
+      )
+      if new_user.save
+        if session[:current_user_id]
+          redirect_to users_path
+        else
+          session[:current_user_id] = new_user.id
+          flash[:success] = "Signed-up Successfully!!"
+          redirect_to sessions_home_path
+        end
+      else
+        flash[:error] = new_user.errors.full_messages.join(", ")
+        redirect_to new_user_path
+      end
     end
   end
 
