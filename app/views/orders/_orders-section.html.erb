@@ -3,46 +3,50 @@
     <h2 class="OrdersSection-title"><%= section_title %></h2>
   </div>
   <ul>
-    <% orders.each do |order| %>
-      <li>
-        <div class="OrderDetails">
-        <% user = User.find(order.user_id)%>
-        <% if user.role == "customer"%>
-          <h2><%= user.name %></h2>
-        <% else %>
-          <h2>Walk In Customer(Ordered by <%= user.name %>)
-        <% end %>
-          <% if order.delivered %>
-            <%= link_to "Invoice" , invoice_path(id: order.id),class: "Invoice-link"%>
+    <% if orders.count > 0%>
+      <% orders.each do |order| %>
+        <li>
+          <div class="OrderDetails">
+          <% user = User.find(order.user_id)%>
+          <% if user.role == "customer"%>
+            <h2><%= user.name %></h2>
+          <% else %>
+            <h2>Walk In Customer(Ordered by <%= user.name %>)
           <% end %>
-          <div class="OrderDetails-Items">
-            <h3>Order Id: <%= order.id %></h3>
-            <% order.order_items.each do|order_item| %>
-                <div>
-                  <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
-                  <%= order_item.menu_item_name %> x <%= order_item.quantity %>
-                  <%= order_item.menu_item_price * order_item.quantity %>
-                </div>
+            <% if order.delivered %>
+              <%= link_to "Invoice" , invoice_path(id: order.id),class: "Invoice-link"%>
             <% end %>
-           <h3> Total Price: <%= order.total_price%>
-          </div>
-          <div class="OrderDetails-Status">
-            <%if @current_user.role == "customer" %>
-              <% if order.delivered %>
-                <h3 class="Delivered">Delivered at <%= order.delivered_at %>
+            <div class="OrderDetails-Items">
+              <h3>Order Id: <%= order.id %></h3>
+              <% order.order_items.each do|order_item| %>
+                  <div>
+                    <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+                    <%= order_item.menu_item_name %> x <%= order_item.quantity %>
+                    <%= order_item.menu_item_price * order_item.quantity %>
+                  </div>
+              <% end %>
+            <h3> Total Price: <%= order.total_price%>
+            </div>
+            <div class="OrderDetails-Status">
+              <%if @current_user.role == "customer" %>
+                <% if order.delivered %>
+                  <h3 class="Delivered">Delivered at <%= order.delivered_at %>
+                <% else %>
+                  <h3 class="Status">Status : Pending
+                <% end %>
               <% else %>
-                <h3 class="Status">Status : Pending
+                <%= form_with(url: order_status_path(id: order.id),
+                                method: "put", class: "Orders") do %>
+                  <%= button_tag("Deliver",type: "submit",class:   "OrderDetails-button") %>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= form_with(url: order_status_path(id: order.id),
-                              method: "put", class: "Orders") do %>
-                <%= button_tag("Deliver",type: "submit",class:   "OrderDetails-button") %>
-              <% end %>
-            <% end %>
+            </div>
           </div>
-        </div>
-      </li>
-      <br>
-    <% end %>
-  </ul>
+        </li>
+        <br>
+      <% end %>
+    </ul>
+  <% else %>
+     <%= image_tag "pending.jpeg",class: "EmptyCart-Img" %>
+  <% end %>
 </section>

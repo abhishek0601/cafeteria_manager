@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
     else
       order.delivered = true
       order.delivered_at = DateTime.now.in_time_zone("Asia/Kolkata")
+      flash[:success] = "Ordered Successfully"
     end
     if order.save!
       if @current_user.role == "customer"
