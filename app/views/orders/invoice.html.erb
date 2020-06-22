@@ -8,11 +8,19 @@
   <h3 class="Invoice-Date">Order Date: <%= order.date %></h3>
   <h3 class="Invoice-Head">Bill To:</h3>
   <% user = User.find(order.user_id)%>
-  <div class="Invoice-Details">
-    <p><%= user.name %>
-    <p><%= user.address %>
-    <p><%= user.phone_number %>
-  </div>
+  <% if user.role == "customer" %>
+    <div class="Invoice-Details">
+      <p><%= user.name %>
+      <p><%= user.address %>
+      <p><%= user.phone_number %>
+    </div>
+  <% else %>
+    <div class="Invoice-Details">
+      <p><%= "Walk-In Customer" %>
+      <p><%= "-------" %>
+      <p><%= "-------" %>
+    </div>
+  <% end %>
   <h3>Delivered On: <%=order.delivered_at.strftime('%d %b %Y') %></h3>
   <table class="Invoice-Table">
         <tr class = "Invoice-Title">

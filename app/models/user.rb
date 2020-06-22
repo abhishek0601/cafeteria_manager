@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, presence: true
+  validates :phone_number, format: { with: /\d[0-9]\)*\z/, message: " bad format" }, :length => { :minimum => 10, :maximum => 15 }
 
   def self.clerk
     all.where("role=?", "clerk")

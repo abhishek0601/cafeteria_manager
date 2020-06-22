@@ -4,9 +4,9 @@
   <section class = "Cart">
     <div class="SignUp">
     <% if @current_user.role == "customer" %>
-      <h2>My Cart</h2>
+      <h2 class="Cart-Heading">My Cart</h2>
     <% else %>
-      <h2>Order for Walk-In Customer</h2>
+      <h2 class="Cart-Heading">Order for Walk-In Customer</h2>
     <% end %>
       <table class="Cart-Table">
         <tr class = "Cart-Title">
@@ -45,7 +45,7 @@
           <% end %>
         <% end %>
       </table>
-      <h3>Total Price = <%= order.total_price %> </h3>
+      <h3 class="Cart-Total">Total Price = <%= order.total_price %> </h3>
     </div>
   </section>
   <div class="Cart-Div">
