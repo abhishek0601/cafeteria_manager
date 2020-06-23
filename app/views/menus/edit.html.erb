@@ -1,0 +1,8 @@
+<div class="Menus-Add">
+  <%= form_for @menu ,{:url => update_menu_path , method: :patch} do |form| %>
+    <h3 class="EditMenu-label">Edit Menu</h3>
+        <%= form.text_field :name, placeholder: "Add-Menu", class: 'Menus-name'%>
+        <%= form.text_field :menu_url, placeholder: "Menu-Url", class: 'Menus-name'%>
+        <%= form.submit "Edit-Menu",class: "Menus-button" %>
+  <% end %>
+</div>

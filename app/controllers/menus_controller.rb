@@ -35,12 +35,22 @@ class MenusController < ApplicationController
     redirect_to menus_path
   end
 
+  def edit
+    @menu = Menu.find(params[:id])
+  end
+
+  def update_menu
+    @menu = Menu.find(params[:id])
+    @menu.update(name: params[:menu][:name], menu_url: params[:menu][:menu_url])
+    flash[:success] = "Menu updated successfully"
+    redirect_to menus_path
+  end
+
   def update
     id = params[:id]
     active = params[:active]
-    menu = Menu.find(id)
-    menu.active = active
-    menu.save!
+    @menu = Menu.find(id)
+    @menu.update(active: active)
     redirect_to menus_path
   end
 end

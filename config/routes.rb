@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get "/all_orders" => "orders#all_orders", as: :all_orders
   patch "/users/:id/change_role" => "users#change_role", as: :change_user_role
   get "/menus/:id/add_item" => "menu_items#add_item", as: :add_item
+  patch "menus/update/:id" => "menus#update_menu", as: :update_menu
 end

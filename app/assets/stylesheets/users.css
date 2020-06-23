@@ -60,6 +60,7 @@
 .Form-submit:hover{
   background: rgb(22, 190, 196);
   text-shadow:0 1px 3px darken(rgb(24,235,235), 30%);
+  color: black;
 }
 
 .Forgot-Password{

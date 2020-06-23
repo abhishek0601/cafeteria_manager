@@ -1,18 +1,20 @@
-<div class="Navigation">
-  <div class="Navigation-Left">
-    <%= image_tag("logo.jpg",class: "Logo-icon") %>
-    <%= image_tag("name.png",class: "Logo-name" )%>
+<div class="Home-Page">
+  <div class="Navigation">
+    <div class="Navigation-Left">
+      <%= image_tag("logo.jpg",class: "Logo-icon") %>
+      <%= image_tag("name.png",class: "Logo-name" )%>
+    </div>
   </div>
-</div>
-<br>
-<img src="animation.gif" class="Home-gif">
-<div class="Home-Align">
-    <div class="HomeLink-Div">
-     <%= image_tag("signup.svg",class: "Home-svg")%>
-     <%= link_to "Sign-up", new_user_path%>
-    </div>
-    <div class="HomeLink-Div">
-      <%= image_tag("login.svg",class: "Home-svg")%>
-      <%=link_to "Log-in",new_sessions_path%>
-    </div>
+  <br>
+  <img src="animation.gif" class="Home-gif">
+  <div class="Home-Align">
+      <div class="HomeLink-Div">
+      <%= image_tag("signup.svg",class: "Home-svg")%>
+      <%= link_to "Sign-up", new_user_path%>
+      </div>
+      <div class="HomeLink-Div">
+        <%= image_tag("login.svg",class: "Home-svg")%>
+        <%=link_to "Log-in",new_sessions_path%>
+      </div>
+  </div>
 </div>

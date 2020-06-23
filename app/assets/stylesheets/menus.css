@@ -192,11 +192,15 @@
   height: 40px;
 }
 
+.Menus-container:hover,.MenuItems-container:hover{
+  background-color: lightpink;
+}
+
 .Menus-container:hover .Menu-delete{
   visibility: visible;
 }
 
-.Menus-container:hover .Edit-Icon{
+.Menus-container:hover .Menu-edit{
   visibility: visible;
 }
 
@@ -331,4 +335,16 @@
   text-transform: uppercase;
   padding: 10px 10px;
   border: 1px solid black;
+}
+
+.Menu-edit{
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
+  visibility: hidden;
+}
+
+.EditMenu-label{
+  background-color: lightgreen;
+  width: max-content;
 }

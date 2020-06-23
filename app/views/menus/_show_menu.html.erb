@@ -20,13 +20,17 @@
                       <%= menu.name %>
                     <% end %>
                   </p>
-                  <a class="Menu-delete ">
-                    <%= form_with(url: "/menus/#{menu.id}" , method: "delete") do %>
-                      <% if @current_user.role != "customer" %>
-                        <%= image_submit_tag("trash.svg") %>
+                  <% if @current_user.role == "owner" %>
+                    <a class="Menu-delete ">
+                      <%= form_with(url: "/menus/#{menu.id}" , method: "delete") do %>
+                          <%= image_submit_tag("trash.svg") %>
                       <% end %>
+                    </a>
+
+                    <%= link_to edit_menu_path(menu.id) do%>
+                      <%= image_submit_tag("edit.png",class: "Menu-edit") %>
                     <% end %>
-                  </a>
+                  <% end %>
                 </div>
               </div>
             </li>
