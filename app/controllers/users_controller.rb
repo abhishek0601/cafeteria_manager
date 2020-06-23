@@ -35,10 +35,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    render "users/new"
-  end
-
   def destroy
     id = params[:id]
     user = User.all.find(id)

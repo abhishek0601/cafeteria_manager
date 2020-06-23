@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   before_action :ensure_user_logged_in
-  before_action :ensure_owner_logged_in, :only => [:create, :destroy]
+  before_action :ensure_owner_logged_in, :only => [:create, :destroy, :update_menu]
   before_action :ensure_staff_logged_in, :only => [:update]
 
   def index

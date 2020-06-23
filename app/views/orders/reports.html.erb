@@ -22,9 +22,14 @@
             <th class="Report-TitleHead">Invoice</th>
           </tr>
           <% orders.each do|order| %>
+              <% user = User.find(order.user_id)%>
               <tr class="Report-Title">
                 <td class="Report-Items"><%= order.user_id %></td>
-                <td class="Report-Items"><%= User.find(order.user_id).name %></td>
+                <% if user.role == "customer" %>
+                  <td class="Report-Items"><%= user.name %></td>
+                <% else %>
+                  <td class="Report-Items">Walk-In(By <%= user.name%>) </td>
+                <% end %>
                 <td class="Report-Items"><%= order.delivered_at.strftime('%d %b %Y') %></td>
                 <td class="Report-Items"><%= order.total_price%></td>
                 <td class="Report-Items"> <%= link_to "Invoice" , invoice_path(id: order.id)%></td>
