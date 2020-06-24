@@ -21,7 +21,7 @@
           <%= form.text_area :description, class: "Form-input"%>
         </p>
         <p class="Form-section">
-          <%= form.submit "Edit-Item!", class: "Form-submit"%>
+          <%= form.submit "Edit-Item!", class: "Form-submit", data: {disable_with: "Updating..."} %>
       </p>
     <% end %>
 </section>

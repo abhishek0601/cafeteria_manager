@@ -20,7 +20,7 @@
               <h3>Rs.<%=menu_item.price%></h3>
               <% if @current_user.role == "owner" %>
                 <a class="Menu-delete ">
-                  <%= form_with(url: "/menu_items/#{menu_item.id}" , method: "delete") do %>
+                  <%= form_with(url: menu_item_path(menu_item.id) , method: "delete") do %>
                       <%= image_submit_tag("trash.svg") %>
                     <% end %>
                 </a>
@@ -41,7 +41,7 @@
                                                       menu_id: menu_item.menu_id
                                                       ),
                                 method: "post", local: true,class: "Menus") do %>
-                  <%= button_tag("Add",type: "submit",class:   "Menus-button") %>
+                  <%= button_tag("Add",type: "submit",class:   "Menus-button",data: {disable_with: "Adding..."}) %>
                 <% end %>
               <% end %>
               <% if @current_user.role == "owner" %>

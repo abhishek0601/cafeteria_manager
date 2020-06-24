@@ -24,7 +24,7 @@
            </td>
            <td>
             <a>
-               <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
+               <%= form_with(url: user_path(user.id), method: "delete") do %>
                   <%= image_submit_tag("trash.svg") %>
                <% end %>
             </a>

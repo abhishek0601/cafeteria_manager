@@ -25,13 +25,14 @@ class OrdersController < ApplicationController
       order.delivered = true
       order.delivered_at = DateTime.now.in_time_zone("Asia/Kolkata")
       flash[:success] = "Ordered Successfully"
+      redirect_to menus_path
     end
     if order.save!
       if @current_user.role == "customer"
         flash[:success] = "Successfully Ordered and Invoice would be sent through E-mail"
       end
+      redirect_to orders_path
     end
-    redirect_to orders_path
   end
 
   def status

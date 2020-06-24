@@ -3,6 +3,6 @@
     <h3 class="EditMenu-label">Edit Menu</h3>
         <%= form.text_field :name, placeholder: "Add-Menu", class: 'Menus-name'%>
         <%= form.text_field :menu_url, placeholder: "Menu-Url", class: 'Menus-name'%>
-        <%= form.submit "Edit-Menu",class: "Menus-button" %>
+        <%= form.submit "Edit-Menu",class: "Menus-button",data: {disable_with: "Updating..."} %>
   <% end %>
 </div>

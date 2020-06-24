@@ -88,8 +88,8 @@
 }
 
 .Navigation a:hover {
-  background: skyblue;
-  color: rgb(15, 39, 37);
+  color: black;
+  font-weight: bold;
 }
 
 .Navigation a.active {

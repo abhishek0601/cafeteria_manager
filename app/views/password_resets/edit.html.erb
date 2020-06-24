@@ -21,6 +21,6 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation,class: "Reports-input" %>
     </p>
-    <div><%= f.submit 'Update password' %></div>
+    <div><%= f.submit 'Update password',data: {disable_with: "Updating..."} %></div>
   <% end %>
 </div>

@@ -49,8 +49,8 @@
     </div>
   </section>
   <div class="Cart-Div">
-    <%= form_with(url: "/orders/#{order.id}" , method: "put") do %>
-        <%= button_tag("Order",type: "submit", class: "Menus-button")%>
+    <%= form_with(url: order_path(order.id) , method: "put") do %>
+        <%= button_tag("Order",type: "submit", class: "Menus-button", data: {disable_with: "Ordering.."})%>
     <% end %>
     <%= link_to menus_path ,class: "AddMenu-Link" do %>
       <i class="fa fa-cutlery" aria-hidden="true"></i>

@@ -4,7 +4,7 @@
     <h3>Start Date: <%= date_field_tag "start_date",nil ,class: "Report-input" %>
     <h3>End Date:  <%= date_field_tag "end_date",nil, class: "Report-input" %>
     <h3> Customer ID: <%= number_field_tag "customer_id" , nil , { min: 0, class: "Report-input"} %>
-    <%= submit_tag "Search Orders",class: "Report-submit" %></h3>
+    <%= submit_tag "Search Orders",class: "Report-submit", data: {disable_with: "Searching"} %></h3>
   <% end %>
 </div>
 <% if orders %>

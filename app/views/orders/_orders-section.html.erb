@@ -37,7 +37,7 @@
               <% else %>
                 <%= form_with(url: order_status_path(id: order.id),
                                 method: "put", class: "Orders") do %>
-                  <%= button_tag("Deliver",type: "submit",class:   "OrderDetails-button") %>
+                  <%= button_tag("Deliver",type: "submit",class:   "OrderDetails-button", data: {disable_with: "Delivering..."}) %>
                 <% end %>
               <% end %>
             </div>

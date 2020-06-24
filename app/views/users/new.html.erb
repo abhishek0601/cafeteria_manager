@@ -22,7 +22,7 @@
         <%= form.password_field :password, class: "Form-input" %>
       </p>
       <p class="Form-section">
-        <%= form.submit "Sign-up!", class: "Form-submit"%>
+        <%= form.submit "Sign-up!", class: "Form-submit",data: {disable_with: "Signing-up...!"} %>
       </p>
     <% end %>
     <p>Already have an account? <%=link_to "Sign-in here", new_sessions_path %></p>

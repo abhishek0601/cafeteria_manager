@@ -16,7 +16,7 @@ class MenuItemsController < ApplicationController
       redirect_to menu_path(session[:current_menu_id])
     else
       flash[:error] = menu_item.errors.full_messages.join(", ")
-      redirect_to menu_path(session[:current_menu_id])
+      redirect_to add_item_path(session[:current_menu_id])
     end
   end
 

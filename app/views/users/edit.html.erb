@@ -21,7 +21,7 @@
         <%= form.password_field :password, class: "Form-input" %>
       </p>
       <p class="Form-section">
-        <%= form.submit "Edit Profile", class: "Form-submit"%>
+        <%= form.submit "Edit Profile", class: "Form-submit", data: {disable_with: "Updating..."}%>
       </p>
     <% end %>
   </section>
