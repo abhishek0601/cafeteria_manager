@@ -22,4 +22,20 @@ class Order < ActiveRecord::Base
     end
     total_price
   end
+
+  def self.pending_orders
+    all.where("delivered=?", false)
+  end
+
+  def self.all_orders
+    all.where("delivered=?", true).order("delivered_at DESC")
+  end
+
+  def delivered_time
+    delivered_at.strftime("%d %b %Y")
+  end
+
+  def find_order_items(order_item)
+    order_items.find_by(menu_item_name: order_item.menu_item_name)
+  end
 end

@@ -21,7 +21,7 @@
       <p><%= "-------" %>
     </div>
   <% end %>
-  <h3>Delivered On: <%=order.delivered_at.strftime('%d %b %Y') %></h3>
+  <h3>Delivered On: <%=order.delivered_time %></h3>
   <table class="Invoice-Table">
         <tr class = "Invoice-Title">
           <th class="Invoice-TitleHead">SNo.</th>
@@ -32,7 +32,7 @@
         </tr>
         <% serial_no = 1 %>
         <% order.order_items.each do|order_item| %>
-          <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+          <% order_item = order.find_order_items(order_item) %>
             <tr class="Invoice-Title">
               <td class="Invoice-Items"><%= serial_no %></td>
               <td class="Invoice-Items"><%= order_item.menu_item_name %></td>

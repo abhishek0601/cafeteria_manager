@@ -15,7 +15,7 @@
             <td class="Users-Items"><p class = "User-name"><%= user.name%></p></td>
             <td class="Users-Items"><%= user.email %></td>
             <td class="Users-Items"><%= user.phone_number %></td>
-            <td class="Users-Items"><%= user.orders.count %></td>
+            <td class="Users-Items"><%= user.total_orders %></td>
            <td class="Users-Items">
             <% role = user.role == "customer" ? "clerk" : "customer" %>
             <%= form_for(user, url: change_user_role_path(id: user.id,role: role)) do %>

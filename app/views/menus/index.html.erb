@@ -12,13 +12,19 @@
 <div class="Menus-Align">
   <div class="Menus-Links">
     <b>Menu</b>
-      <% Menu.all.where("active=?",true).each do |menu| %>
-       <a href="#<%=menu.id%>" class="Menu-names"><%= menu.name %></a>
+      <% if @current_user.role == "customer" %>
+        <% Menu.active_menus.each do |menu| %>
+          <a href="#<%=menu.id%>" class="Menu-names"><%= menu.name %></a>
+        <% end %>
+      <% else %>
+        <% Menu.all.each do |menu| %>
+          <a href="#<%=menu.id%>" class="Menu-names"><%= menu.name %></a>
+        <% end %>
       <% end %>
   </div>
   <div class = "Menus-List">
     <% if @current_user.role == "customer" %>
-      <%= render partial: "show_menu",locals: {menus: Menu.all.where("active=?",true)} %>
+      <%= render partial: "show_menu",locals: {menus: Menu.active_menus} %>
     <% else %>
       <%= render partial: "show_menu",locals: {menus: Menu.all} %>
     <% end %>

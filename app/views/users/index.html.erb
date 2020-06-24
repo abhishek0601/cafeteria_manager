@@ -2,11 +2,11 @@
   <article>
     <div class="Users-Table">
       <%= render partial:"users-section", locals: {
-        users: User.all.where("role=?","clerk"),
+        users: User.clerk,
         user_title: "Billing Clerks"
       } %>
       <%= render partial:"users-section", locals: {
-        users: User.all.where("role=?","customer"),
+        users: User.users,
         user_title: "Customers"
       } %>
     </div>

@@ -28,10 +28,10 @@ class OrdersController < ApplicationController
     end
     if order.save!
       if @current_user.role == "customer"
-        flash[:notice] = "Successfully Ordered and Invoice would be sent through E-mail"
+        flash[:success] = "Successfully Ordered and Invoice would be sent through E-mail"
       end
     end
-    redirect_to menus_path
+    redirect_to orders_path
   end
 
   def status

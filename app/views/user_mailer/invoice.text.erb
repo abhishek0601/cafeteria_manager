@@ -5,12 +5,12 @@ Bill To:                                                          Order Date: <%
   <%= @user.address %>
   <%= @user.phone_number %>
 
-Delivered On: <%= @order.delivered_at.strftime('%d %b %Y') %>
+Delivered On: <%= @order.delivered_time %>
 
   S.No    Name      Quantity  Unit Price  Price
 <% serial_no = 1 %>
 <% @order.order_items.each do|order_item| %>
-  <% order_item = @order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+  <% order_item = @order.find_order_items(order_item) %>
   <%= serial_no %>        <%= order_item.menu_item_name %>         <%= order_item.quantity %>        <%= order_item.menu_item_price%>      <%= order_item.menu_item_price*order_item.quantity %>
   <% serial_no = serial_no + 1%>
 <% end %>

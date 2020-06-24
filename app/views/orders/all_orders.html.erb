@@ -3,7 +3,7 @@
       <h2 class="OrdersSection-title">All Orders</h2>
     </div>
     <ul>
-      <% Order.all.where("delivered=?",true).each do |order| %>
+      <% Order.all_orders.each do |order| %>
         <li>
           <div class="OrderDetails">
             <% user = User.find(order.user_id)%>

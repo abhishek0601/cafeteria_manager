@@ -2,14 +2,14 @@
   <article>
     <% if @current_user.role == "customer" %>
       <%= render partial:"orders-section", locals: {
-        orders: @current_user.orders.where.not(delivered: nil),
+        orders: @current_user.user_orders(@current_user.orders),
         section_title: "My Orders"
       } %>
     <% else %>
       <%= render partial:"orders-section", locals: {
-        orders: Order.all.where("delivered=?",false),
+        orders: Order.pending_orders,
         section_title: "Pending Orders",
-        all_orders: Order.all.where("delivered=?",true)
+        all_orders: Order.all_orders
       } %>
     <% end %>
   </article>
