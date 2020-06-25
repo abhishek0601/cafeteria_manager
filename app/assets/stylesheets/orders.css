@@ -213,11 +213,17 @@
   padding: 12px 40px;
 }
 
+.Reports-input-id{
+  display: flex;
+  align-items: baseline;
+}
+
 .Report-submit{
-  background: rgb(24, 235, 235);
+  background: slateblue;
   border-radius: 2px;
   border: none;
-  color: #fff;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
   display: block;
   font-size: 20px;
@@ -228,5 +234,39 @@
 }
 
 .Report-submit:hover{
-  background-color: slateblue;
+  background-color: blue;
+  color: white;
+}
+
+.Reports-CustomerID{
+  float: right;
+  padding: 10px 10px;
+  font-weight: bold;
+  background-color: rgb(170, 238, 235);
+  width: max-content;
+  margin-right:30px;
+  font-size: 20px;
+}
+
+.Reports-Dates,.Reports-Details{
+  display: flex;
+  width: max-content;
+  background-color: rgb(178, 231, 229);
+  margin: 10px 10px;
+}
+
+.Reports-Dates .Start-Date,.End-Date{
+  padding: 5px 5px;
+}
+
+.Reports-Details h3{
+  padding: 5px 5px;
+}
+
+.Reports-Empty{
+  padding: 25px 25px;
+  margin: auto;
+  background-color: brown;
+  width: max-content;
+  color: white;
 }

@@ -17,31 +17,37 @@
         </tr>
         <% serial_no = 1 %>
         <% order.order_items.each do|order_item| %>
-          <% menu_item = MenuItem.find(order_item.menu_item_id)%>
-          <% if MenuItem.exists?(order_item.menu_item_id) and Menu.find(menu_item.menu_id).active %>
-            <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
-            <tr class="Cart-Title">
-              <td class="Cart-Items"><%= serial_no %></td>
-              <td class="Cart-Items"><%= order_item.menu_item_name %></td>
-              <td class="Cart-Items">
-                <div class="Counter">
-                  <%= button_to "-", update_order_items_path(id: order_item.id,route: "cart", update: "-",menu_id: menu_item.menu_id), :method => :put %>
-                  <h3 class="Quantity"><%= order_item.quantity %></h3>
-                  <%= button_to "+", update_order_items_path(id: order_item.id,route: "cart", update: "+",menu_id: menu_item.menu_id), :method => :put %>
-                </div>
-              </td>
-              <td class="Cart-Items"><%= order_item.menu_item_price*order_item.quantity %></td>
-              <td>
-                <a>
-                    <%= form_with(url: "/order_items/#{order_item.id}" , method: "delete") do %>
-                        <%= image_submit_tag("trash.svg") %>
-                    <% end %>
-                </a>
-              </td>
-            </tr>
-            <% serial_no = serial_no + 1%>
+          <% if MenuItem.exists?(order_item.menu_item_id) %>
+            <% menu_item = MenuItem.find(order_item.menu_item_id)%>
+            <% if Menu.find(menu_item.menu_id).active %>
+              <% order_item = order.order_items.find_by(menu_item_name: order_item.menu_item_name)%>
+              <tr class="Cart-Title">
+                <td class="Cart-Items"><%= serial_no %></td>
+                <td class="Cart-Items"><%= order_item.menu_item_name %></td>
+                <td class="Cart-Items">
+                  <div class="Counter">
+                    <%= button_to "-", update_order_items_path(id: order_item.id,route: "cart", update: "-",menu_id: menu_item.menu_id), :method => :put %>
+                    <h3 class="Quantity"><%= order_item.quantity %></h3>
+                    <%= button_to "+", update_order_items_path(id: order_item.id,route: "cart", update: "+",menu_id: menu_item.menu_id), :method => :put %>
+                  </div>
+                </td>
+                <td class="Cart-Items"><%= order_item.menu_item_price*order_item.quantity %></td>
+                <td>
+                  <a>
+                      <%= form_with(url: "/order_items/#{order_item.id}" , method: "delete") do %>
+                          <%= image_submit_tag("trash.svg") %>
+                      <% end %>
+                  </a>
+                </td>
+              </tr>
+              <% serial_no = serial_no + 1%>
+            <% else %>
+              <% OrderItem.destroy(order_item.id) %>
+              <% flash[:error] = "#{menu_item.name} is not available and was removed from cart" %>
+            <% end %>
           <% else %>
               <% OrderItem.destroy(order_item.id) %>
+              <% flash[:error] = "Menu item has been deleted by owner and was removed from cart" %>
           <% end %>
         <% end %>
       </table>

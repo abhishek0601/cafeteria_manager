@@ -7,20 +7,28 @@
   <h3>Order Id: <%=order.id%></h3>
   <h3 class="Invoice-Date">Order Date: <%= order.date %></h3>
   <h3 class="Invoice-Head">Bill To:</h3>
-  <% user = User.find(order.user_id)%>
-  <% if user.role == "customer" %>
-    <div class="Invoice-Details">
-      <p><%= user.name %>
-      <p><%= user.address %>
-      <p><%= user.phone_number %>
-    </div>
-  <% else %>
-    <div class="Invoice-Details">
-      <p><%= "Walk-In Customer" %>
-      <p><%= "-------" %>
-      <p><%= "-------" %>
-    </div>
-  <% end %>
+  <% if User.exists?(order.user_id) %>
+    <% user = User.find(order.user_id)%>
+      <% if user.role == "customer" %>
+        <div class="Invoice-Details">
+          <p><%= user.name %>
+          <p><%= user.address %>
+          <p><%= user.phone_number %>
+        </div>
+      <% else %>
+        <div class="Invoice-Details">
+          <p><%= "Walk-In Customer" %>
+          <p><%= "-------" %>
+          <p><%= "-------" %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="Invoice-Details">
+          <p><%= "Deleted User" %>
+          <p><%= "-------" %>
+          <p><%= "-------" %>
+        </div>
+    <% end %>
   <h3>Delivered On: <%=order.delivered_time %></h3>
   <table class="Invoice-Table">
         <tr class = "Invoice-Title">

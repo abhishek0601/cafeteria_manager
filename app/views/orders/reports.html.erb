@@ -1,16 +1,27 @@
 <div class="Reports-Form">
   <h2>Reports</h2>
   <%= form_with url:reports_path,method: "get" , local: "true" do %>
-    <h3>Start Date: <%= date_field_tag "start_date",nil ,class: "Report-input" %>
-    <h3>End Date:  <%= date_field_tag "end_date",nil, class: "Report-input" %>
-    <h3> Customer ID: <%= number_field_tag "customer_id" , nil , { min: 0, class: "Report-input"} %>
-    <%= submit_tag "Search Orders",class: "Report-submit", data: {disable_with: "Searching"} %></h3>
+    <h3>Start Date: <%= date_field_tag "start_date",nil ,class: "Report-input" %></h3>
+    <h3>End Date:  <%= date_field_tag "end_date",nil, class: "Report-input" %></h3>
+      <h3 class="Reports-input-id"> Customer ID: <%= number_field_tag "customer_id" , nil , { min: 0, class: "Report-input"} %>
+      <%= submit_tag "Search Orders",class: "Report-submit", data: {disable_with: "Searching"} %></h3>
   <% end %>
 </div>
 <% if orders %>
-  <div class="Reports-Form">
-    <h3>Start Date: <%= start_date %></h3>
-    <h3>End Date: <%= end_date %></h3>
+  <div class="Reports-Info">
+    <div class= "Reports-Dates">
+      <h3 class="Start-Date">Start Date: <%= start_date %></h3>
+      <h3 class="End-Date">End Date: <%= end_date %></h3>
+    </div>
+    <% if User.exists?(customer_id) %>
+     <p class="Reports-CustomerID">Customer ID: <%=customer_id%></p>
+    <% else %>
+      <p class="Reports-CustomerID">Customer ID: All</p>
+    <% end %>
+    <div class="Reports-Details">
+      <h3>Total Orders: <%= orders.count %></h3>
+      <h3>Total Amount: <%= Order.total_amount(orders) %></h3>
+    </div>
   </div>
   <div>
     <table class="Reports-Table">
@@ -22,19 +33,27 @@
             <th class="Report-TitleHead">Invoice</th>
           </tr>
           <% orders.each do|order| %>
-              <% user = User.find(order.user_id)%>
-              <tr class="Report-Title">
-                <td class="Report-Items"><%= order.user_id %></td>
-                <% if user.role == "customer" %>
-                  <td class="Report-Items"><%= user.name %></td>
-                <% else %>
-                  <td class="Report-Items">Walk-In(By <%= user.name%>) </td>
-                <% end %>
-                <td class="Report-Items"><%= order.delivered_at.strftime('%d %b %Y') %></td>
-                <td class="Report-Items"><%= order.total_price%></td>
-                <td class="Report-Items"> <%= link_to "Invoice" , invoice_path(id: order.id)%></td>
-              </tr>
+                <tr class="Report-Title">
+                  <td class="Report-Items"><%= order.user_id %></td>
+                  <% if User.exists?(order.user_id) %>
+                      <% user = User.find(order.user_id)%>
+                    <% if user.role == "customer" %>
+                      <td class="Report-Items"><%= user.name %></td>
+                    <% else %>
+                    <td class="Report-Items">Walk-In(By <%= user.name%>) </td>
+                    <% end %>
+                    <% else %>
+                      <td class="Report-Items">Deleted User</td>
+                    <% end %>
+                  <td class="Report-Items"><%= order.delivered_at.strftime('%d %b %Y') %></td>
+                  <td class="Report-Items"><%= order.total_price%></td>
+                  <td class="Report-Items"> <%= link_to "Invoice" , invoice_path(id: order.id)%></td>
+                </tr>
           <% end %>
     </table>
+  </div>
+<% else %>
+  <div class="Reports-Empty">
+    <h3>Search for Reports to display</h3>
   </div>
 <% end %>

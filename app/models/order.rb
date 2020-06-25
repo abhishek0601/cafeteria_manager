@@ -38,4 +38,12 @@ class Order < ActiveRecord::Base
   def find_order_items(order_item)
     order_items.find_by(menu_item_name: order_item.menu_item_name)
   end
+
+  def self.total_amount(orders)
+    total_amount = 0
+    orders.each do |order|
+      total_amount = total_amount + order.total_price
+    end
+    total_amount
+  end
 end
