@@ -19,19 +19,14 @@ class OrdersController < ApplicationController
     success = params[:success]
     order = current_user.orders.find(id)
     order.success = true
-    if @current_user.role == "customer"
-      order.delivered = false
-    else
-      order.delivered = true
-      order.delivered_at = DateTime.now.in_time_zone("Asia/Kolkata")
-      flash[:success] = "Ordered Successfully"
-    end
+    order.delivered = false
     if order.save!
       if @current_user.role == "customer"
         flash[:success] = "Successfully Ordered and Invoice would be sent through E-mail"
         redirect_to orders_path
       else
-        redirect_to menus_path
+        flash[:success] = "Order has been taken successfully"
+        redirect_to orders_path
       end
     end
   end
@@ -42,8 +37,12 @@ class OrdersController < ApplicationController
     @order.delivered_at = DateTime.now.in_time_zone("Asia/Kolkata")
     @user = User.find(@order.user_id)
     if @order.save
-      UserMailer.invoice(@user, @order).deliver
-      flash[:success] = "Order has been delivered successfully"
+      if @user.role == "customer"
+        UserMailer.invoice(@user, @order).deliver
+        flash[:success] = "Order has been delivered successfully"
+      else
+        flash[:success] = "Order has been delivered"
+      end
     end
     redirect_to orders_path
   end
@@ -66,5 +65,11 @@ class OrdersController < ApplicationController
       end
       render "reports", locals: { orders: orders, start_date: params[:start_date], end_date: params[:end_date], customer_id: params[:customer_id] }
     end
+  end
+
+  def destroy
+    order = Order.find(params[:id])
+    order.destroy
+    redirect_to orders_path
   end
 end

@@ -11,10 +11,16 @@
           <% if user.role == "customer"%>
             <h2><%= user.name %></h2>
           <% else %>
-            <h2>Walk In Customer(Ordered by <%= user.name %>)
+            <h2>Walk In Customer(Ordered by <%= user.name %>)</h2>
           <% end %>
             <% if order.delivered %>
               <%= link_to "Invoice" , invoice_path(id: order.id),class: "Invoice-link"%>
+            <% else %>
+              <% if @current_user.id == user.id %>
+                <%= form_with(url: order_path(order.id), method: "delete") do %>
+                  <%= submit_tag("Cancel Order", class: "Cancel-Order", data: {disable_with: "Cancelling..."}) %>
+                <% end %>
+              <% end %>
             <% end %>
             <div class="OrderDetails-Items">
               <h3>Order Id: <%= order.id %></h3>
