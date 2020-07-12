@@ -4,7 +4,7 @@
 Cafeteria Manager is a online food delivery app and also for walk-in customers.
 <ul>
  <li>Installation<br>
-   Required installations : rails version Rails 6.0.2.1
+  Required installations : rails version <strong>Rails 6.0.2.1</strong><br>
    For installation instructions, <a href="https://guides.rubyonrails.org/getting_started.html" >click here</a>
    <br>
    <br>
