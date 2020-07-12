@@ -12,7 +12,7 @@ Cafeteria Manager is a online food delivery app and also for walk-in customers.
   <br>
   <br>
 <li> Database creation<br>
-  <strong> rails generate model <table-name> <name> : <datatype> </strong>
+ <strong> rails generate model table-name column-name : datatype </strong>
   <br>
   <br>
    
