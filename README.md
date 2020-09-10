@@ -31,3 +31,5 @@ Cafeteria Manager is a online food delivery app and also for walk-in customers.
   ``` sh 
    rails server 
    ``` 
+### Deployed Webapp
+<a href="http://foodanza-cafeteria-manager.herokuapp.com">Click here</a> to view the webapp
